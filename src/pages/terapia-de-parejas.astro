@@ -208,24 +208,20 @@ const faqSchema = buildFaqSchema(faqs);
     </div>
   </section>
 
-  {/* Modalidades y honorarios */}
+  {/* Modalidad */}
   <section class="container-page py-section">
     <SectionHeading
       kicker="Logística"
-      title="Modalidades y honorarios."
+      title="Modalidad."
     />
 
     <div class="mt-group max-w-4xl">
       <DataTable
-        headers={['Modalidad', 'Duración', 'Frecuencia sugerida', 'Honorarios']}
+        headers={['Modalidad', 'Duración', 'Frecuencia sugerida']}
         rows={[
-          ['Presencial en Olavarría', `${SITE.sessionDuration.pareja} minutos`, 'Semanal o quincenal', `${SITE.pricing.pareja} ARS`],
+          ['Presencial en Olavarría', `${SITE.sessionDuration.pareja} minutos`, 'Semanal o quincenal'],
         ]}
       />
-
-      <p class="mt-4 text-caption text-ink-muted">
-        Honorarios actualizados a {SITE.pricing.actualizado}.
-      </p>
 
       <div class="mt-8 max-w-prose space-y-4 text-ink-soft">
         <p>
@@ -236,9 +232,9 @@ const faqSchema = buildFaqSchema(faqs);
           que en pareja muchas veces es lo que más importa.
         </p>
         <p>
-          La primera sesión es una entrevista clínica de {SITE.sessionDuration.pareja} minutos a
-          honorarios regulares. Sirve para entender el motivo de consulta
-          y definir conjuntamente si tiene sentido continuar.
+          La primera sesión es una entrevista clínica de {SITE.sessionDuration.pareja} minutos.
+          Sirve para entender el motivo de consulta y definir conjuntamente
+          si tiene sentido continuar. Honorarios a consultar por WhatsApp.
         </p>
       </div>
     </div>

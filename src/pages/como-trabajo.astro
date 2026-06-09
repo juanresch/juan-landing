@@ -42,10 +42,10 @@ const breadcrumb = buildBreadcrumbSchema([
     <SectionHeading kicker="01" title="La sesión inicial." />
     <div class="mt-group max-w-prose space-y-4 text-[18px] leading-relaxed text-ink-soft">
       <p>
-        La primera sesión es una entrevista clínica de 60 minutos a
-        honorarios regulares. Sirve para entender el motivo de consulta,
-        mapear el contexto y definir conjuntamente si tiene sentido continuar
-        y bajo qué encuadre. No firma compromiso de proceso.
+        La primera sesión es una entrevista clínica de 60 minutos. Sirve
+        para entender el motivo de consulta, mapear el contexto y definir
+        conjuntamente si tiene sentido continuar y bajo qué encuadre. No
+        firma compromiso de proceso.
       </p>
     </div>
   </section>
@@ -71,24 +71,21 @@ const breadcrumb = buildBreadcrumbSchema([
   </section>
 
   <section class="container-page py-section">
-    <SectionHeading kicker="04" title="Honorarios y política." />
+    <SectionHeading kicker="04" title="Modalidades y política." />
     <div class="mt-group max-w-4xl">
       <DataTable
         headers={['Concepto', 'Detalle']}
         rows={[
-          ['Sesión individual / adolescente', `${SITE.sessionDuration.individual} min · ${SITE.pricing.individual} ARS`],
-          ['Sesión de pareja', `${SITE.sessionDuration.pareja} min · ${SITE.pricing.pareja} ARS`],
+          ['Sesión individual / adolescente', `${SITE.sessionDuration.individual} minutos`],
+          ['Sesión de pareja', `${SITE.sessionDuration.pareja} minutos`],
           ['Modalidad', 'Presencial en Olavarría o online en toda LatAm (mismo honorario)'],
           ['Frecuencia sugerida', 'Semanal o quincenal'],
           ['Cancelaciones', 'Con 24h de anticipación, sin costo. Menos de 24h se cobra el 100% de la sesión.'],
           ['Obras sociales', '[TBD — confirmar política con Juan]'],
           ['Formas de pago', 'Transferencia, efectivo, Mercado Pago, Wise (LatAm)'],
+          ['Honorarios', 'A consultar por WhatsApp'],
         ]}
       />
-
-      <p class="mt-4 text-caption text-ink-muted">
-        Honorarios actualizados a {SITE.pricing.actualizado}.
-      </p>
     </div>
   </section>
 

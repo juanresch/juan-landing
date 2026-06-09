@@ -98,18 +98,18 @@ const service = buildServiceSchema({
   </section>
 
   <section class="container-page py-section">
-    <SectionHeading kicker="Logística" title="Modalidades y honorarios." />
+    <SectionHeading kicker="Logística" title="Modalidades." />
     <div class="mt-group max-w-4xl">
       <DataTable
-        headers={['Modalidad', 'Duración', 'Frecuencia sugerida', 'Honorarios']}
+        headers={['Modalidad', 'Duración', 'Frecuencia sugerida']}
         rows={[
-          ['Presencial en Olavarría', `${SITE.sessionDuration.individual} minutos`, 'Semanal', `${SITE.pricing.individual} ARS`],
-          ['Online en toda LatAm', `${SITE.sessionDuration.individual} minutos`, 'Semanal', `${SITE.pricing.individual} ARS`],
+          ['Presencial en Olavarría', `${SITE.sessionDuration.individual} minutos`, 'Semanal'],
+          ['Online en toda LatAm', `${SITE.sessionDuration.individual} minutos`, 'Semanal'],
         ]}
       />
 
-      <p class="mt-4 text-caption text-ink-muted">
-        Honorarios actualizados a {SITE.pricing.actualizado}.
+      <p class="mt-6 text-ink-soft">
+        Honorarios a consultar por WhatsApp.
       </p>
     </div>
   </section>
