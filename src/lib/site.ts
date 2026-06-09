@@ -44,8 +44,10 @@ export const SITE = {
     region: 'Buenos Aires',
     postalCode: 'B7400',
     country: 'AR',
-    latitude: -36.8927,
-    longitude: -60.3225,
+    latitude: -36.8987292,
+    longitude: -60.3315123,
+    googleMapsUrl: 'https://maps.app.goo.gl/1ZTqK2fnRNH5yz4QA',
+    googleMapsPlaceId: '0x959445006b7ce4df:0x5c238c55c9906645',
   },
 
   // Honorarios reales

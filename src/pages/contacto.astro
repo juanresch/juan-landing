@@ -97,8 +97,30 @@ const breadcrumb = buildBreadcrumbSchema([
           </p>
         </div>
 
-        <div class="mt-8 aspect-square bg-bg-alt rounded-image overflow-hidden flex items-center justify-center">
-          <span class="text-caption text-ink-muted">[Google Maps embed — Rivadavia 2055, Olavarría]</span>
+        <div class="mt-8 aspect-square bg-bg-alt rounded-image overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.0988052609046!2d-60.33151228817136!3d-36.89872917210332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959445006b7ce4df%3A0x5c238c55c9906645!2sJuan%20Cruz%20Resch!5e1!3m2!1ses!2ses!4v1781043701620!5m2!1ses!2ses"
+            class="w-full h-full"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación del consultorio en Google Maps"
+          ></iframe>
+        </div>
+
+        <div class="mt-4">
+          <a
+            href={SITE.address.googleMapsUrl}
+            class="link-underline text-[15px]"
+            rel="noopener"
+            target="_blank"
+          >
+            Cómo llegar
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
         </div>
       </div>
     </div>
