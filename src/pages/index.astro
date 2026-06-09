@@ -5,6 +5,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { SITE } from '../lib/site';
 import { buildWaUrl } from '../lib/whatsapp';
+import juanConsultorio from '../assets/juan-consultorio.jpg';
 import juanRetrato from '../assets/juan-retrato.jpg';
 ---
 
@@ -42,10 +43,10 @@ import juanRetrato from '../assets/juan-retrato.jpg';
       <div class="md:col-span-5">
         <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden">
           <Image
-            src={juanRetrato}
-            alt="Lic. Juan Cruz Resch, psicólogo"
+            src={juanConsultorio}
+            alt="Lic. Juan Cruz Resch en su consultorio en Olavarría"
             class="w-full h-full object-cover"
-            widths={[400, 600, 800, 1000]}
+            widths={[400, 600, 800]}
             sizes="(max-width: 768px) 90vw, 600px"
             loading="eager"
             fetchpriority="high"
@@ -123,10 +124,17 @@ import juanRetrato from '../assets/juan-retrato.jpg';
   <section class="container-page py-section">
     <div class="grid gap-12 md:gap-16 md:grid-cols-12 items-center">
       <div class="md:col-span-5">
-        <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden flex items-center justify-center">
-          <span class="text-caption text-ink-muted">
-            [Foto contextual de Juan trabajando — 4:5]
-          </span>
+        <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden">
+          <Image
+            src={juanRetrato}
+            alt="Lic. Juan Cruz Resch"
+            class="w-full h-full object-cover"
+            widths={[400, 600, 800, 1000]}
+            sizes="(max-width: 768px) 90vw, 500px"
+            loading="lazy"
+            quality={80}
+            formats={['avif', 'webp']}
+          />
         </div>
       </div>
 
