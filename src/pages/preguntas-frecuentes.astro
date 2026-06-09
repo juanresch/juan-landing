@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import { SITE } from '../lib/site';
+import { buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema';
+import { buildWaUrl } from '../lib/whatsapp';
+
+const url = `${SITE.url}/preguntas-frecuentes`;
+
+const categories = [
+  {
+    title: 'Antes de empezar',
+    items: [
+      {
+        question: '¿Qué pasa si mi pareja no quiere ir?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — respuesta directa al inicio, después matiz. Idea: empezar individualmente sirve igual, muchas veces el otro termina sumándose más adelante.]',
+      },
+      {
+        question: '¿Cuánto tiempo dura un proceso de terapia de pareja?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — depende del momento de la pareja. Un proceso típico se mueve entre 3 y 9 meses con sesiones semanales o quincenales. Detalle: no es un tratamiento de por vida.]',
+      },
+      {
+        question: '¿La terapia sirve si ya pensamos en separarnos?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — sí, incluso más. La terapia ayuda a decidir con claridad y a separarse bien si esa es la decisión.]',
+      },
+      {
+        question: '¿Cómo sé si necesitamos terapia o si esto se arregla solo?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — señales concretas: el conflicto vuelve, hay distancia emocional sostenida, dejaron de imaginar el futuro juntos, hay infidelidad sin resolver.]',
+      },
+    ],
+  },
+  {
+    title: 'Logística y formato',
+    items: [
+      {
+        id: 'online',
+        question: '¿Cómo funciona la modalidad online?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — Google Meet o Zoom, calidad de proceso idéntica a la presencial. Detalle: pueden estar en la misma habitación o cada uno por su lado, recomiendo evaluar caso por caso.]',
+      },
+      {
+        question: '¿Atendés en obras sociales?',
+        answer:
+          '[TBD — confirmar con Juan qué obras sociales acepta o si trabaja con reintegro.]',
+      },
+      {
+        question: '¿Dónde queda el consultorio en Olavarría?',
+        answer: `[Lorem placeholder — dirección exacta + referencias. Mencionar que hay estacionamiento si es relevante.]`,
+      },
+      {
+        question: '¿Cuánto duran las sesiones?',
+        answer:
+          '60 minutos por sesión, tanto presencial como online. La frecuencia sugerida es semanal o quincenal según el momento del proceso.',
+      },
+      {
+        question: '¿Atendés fines de semana?',
+        answer: `[TBD — confirmar horarios actuales con Juan.]`,
+      },
+    ],
+  },
+  {
+    title: 'Durante el proceso',
+    items: [
+      {
+        question: '¿Qué pasa si hubo infidelidad?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — es uno de los motivos más frecuentes. Se puede trabajar y reconstruir, pero requiere un proceso específico. Mencionar fases típicas.]',
+      },
+      {
+        question: '¿Vas a tomar partido por alguno de los dos?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — explicar la postura de neutralidad clínica. Trabajo POR la pareja, no por cada uno.]',
+      },
+      {
+        question: '¿Qué pasa con las sesiones individuales dentro del proceso de pareja?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — política de confidencialidad: qué queda entre vos y yo, qué se comparte con el otro. Definir clara y firme.]',
+      },
+      {
+        question: '¿Y si en una sesión no quiero hablar?',
+        answer:
+          '[Lorem placeholder 120-180 palabras — está bien. Trabajamos con lo que aparece. El silencio también es información.]',
+      },
+    ],
+  },
+  {
+    title: 'Honorarios y obras sociales',
+    items: [
+      {
+        id: 'honorarios',
+        question: '¿Cuánto cuesta una sesión?',
+        answer: `Sesión individual o de adolescente (${SITE.sessionDuration.individual} minutos): ${SITE.pricing.individual} ARS. Sesión de pareja (${SITE.sessionDuration.pareja} minutos): ${SITE.pricing.pareja} ARS. Mismo honorario presencial o online. Honorarios actualizados a ${SITE.pricing.actualizado}. La primera sesión es una entrevista clínica de evaluación a honorarios regulares.`,
+      },
+      {
+        id: 'obras-sociales',
+        question: '¿Aceptás obras sociales?',
+        answer: `[TBD — confirmar con Juan.]`,
+      },
+      {
+        question: '¿Hay descuentos por pago mensual?',
+        answer: '[TBD — confirmar con Juan.]',
+      },
+      {
+        id: 'cancelaciones',
+        question: '¿Política de cancelaciones?',
+        answer:
+          'Cancelaciones con 24 horas de aviso, sin costo. Cancelaciones con menos aviso, se cobra el 100% de la sesión.',
+      },
+    ],
+  },
+];
+
+const allFaqs = categories.flatMap((c) => c.items);
+const faqSchema = buildFaqSchema(allFaqs);
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Inicio', url: SITE.url },
+  { name: 'Preguntas frecuentes', url },
+]);
+---
+
+<BaseLayout
+  title="Preguntas frecuentes — Juan Resch, Psicólogo de Parejas"
+  description="Las preguntas que más recibo sobre terapia de pareja: cuánto dura un proceso, qué pasa si la pareja no quiere ir, infidelidad, honorarios y obras sociales."
+  extraSchemas={[faqSchema, breadcrumb]}
+>
+  <div class="container-page pt-12">
+    <nav aria-label="Migas de pan" class="text-caption text-ink-muted">
+      <a href="/" class="hover:text-ink transition-colors duration-200">Inicio</a>
+      <span class="mx-2">›</span>
+      <span class="text-ink">Preguntas frecuentes</span>
+    </nav>
+  </div>
+
+  <section class="container-page pt-12 pb-section">
+    <div class="max-w-3xl">
+      <h1 class="text-section text-ink">Preguntas frecuentes.</h1>
+      <p class="mt-8 text-lead">
+        Las preguntas que más recibo, con respuestas directas. Si lo que
+        querés saber no está, escribime por WhatsApp.
+      </p>
+    </div>
+  </section>
+
+  {categories.map((cat) => (
+    <section class="container-page py-section">
+      <SectionHeading kicker="Categoría" title={cat.title} />
+      <div class="mt-group max-w-4xl">
+        <FaqAccordion items={cat.items} />
+      </div>
+    </section>
+  ))}
+
+  <section class="container-page py-section">
+    <div class="max-w-4xl">
+      <h2 class="text-section text-ink">
+        ¿No encontraste lo que buscabas?
+      </h2>
+      <p class="mt-6 text-lead max-w-2xl">
+        Escribime por WhatsApp y te respondo personalmente.
+      </p>
+      <div class="mt-10">
+        <a href={buildWaUrl('faq')} class="btn-primary" rel="noopener" target="_blank">
+          Escribir por WhatsApp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

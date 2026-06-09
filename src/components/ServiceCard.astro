@@ -1,0 +1,46 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  variant?: 'large' | 'small';
+  image?: string;
+}
+
+const { href, title, description, variant = 'small', image } = Astro.props;
+
+const isLarge = variant === 'large';
+---
+
+<a
+  href={href}
+  class:list={[
+    'group block bg-bg-alt overflow-hidden transition-colors duration-200 hover:bg-line/40',
+    'rounded-image',
+  ]}
+>
+  {image && (
+    <div class:list={['relative w-full overflow-hidden', isLarge ? 'aspect-[16/9]' : 'aspect-[4/3]']}>
+      <img
+        src={image}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  )}
+  <div class:list={[isLarge ? 'p-8 md:p-10' : 'p-6']}>
+    <h3 class:list={['text-ink', isLarge ? 'text-section' : 'text-headline']}>
+      {title}
+    </h3>
+    <p class="mt-3 text-ink-soft text-[17px] leading-relaxed">
+      {description}
+    </p>
+    <span class="mt-6 inline-flex items-center gap-2 text-[15px] text-ink border-b border-ink pb-0.5 group-hover:text-accent group-hover:border-accent transition-colors duration-200">
+      Conocer
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
+    </span>
+  </div>
+</a>

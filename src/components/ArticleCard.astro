@@ -1,0 +1,69 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  date: string;
+  readingTime?: string;
+  category?: string;
+  image?: string;
+  featured?: boolean;
+}
+
+const {
+  href,
+  title,
+  description,
+  date,
+  readingTime,
+  category,
+  image,
+  featured = false,
+} = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('es-AR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+{featured ? (
+  <a href={href} class="group block">
+    {image && (
+      <div class="aspect-[16/9] overflow-hidden rounded-image bg-bg-alt">
+        <img
+          src={image}
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    )}
+    <div class="mt-6">
+      <p class="text-caption text-ink-muted">
+        {category && <span>{category} · </span>}
+        <time datetime={date}>{formattedDate}</time>
+        {readingTime && <span> · {readingTime}</span>}
+      </p>
+      <h2 class="mt-3 text-section text-ink group-hover:text-accent transition-colors duration-200">
+        {title}
+      </h2>
+      <p class="mt-3 max-w-prose text-lead">{description}</p>
+    </div>
+  </a>
+) : (
+  <a href={href} class="group block py-8 border-b border-line/60">
+    <p class="text-caption text-ink-muted">
+      {category && <span>{category} · </span>}
+      <time datetime={date}>{formattedDate}</time>
+      {readingTime && <span> · {readingTime}</span>}
+    </p>
+    <h2 class="mt-2 text-headline text-ink group-hover:text-accent transition-colors duration-200">
+      {title}
+    </h2>
+    <p class="mt-2 max-w-prose text-ink-soft text-[17px] leading-relaxed">
+      {description}
+    </p>
+  </a>
+)}

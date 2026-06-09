@@ -1,0 +1,138 @@
+---
+import { SITE } from '../lib/site';
+import { buildWaUrl } from '../lib/whatsapp';
+const year = new Date().getFullYear();
+
+const footerSections = [
+  {
+    title: 'Servicios',
+    links: [
+      { label: 'Terapia de parejas', href: '/terapia-de-parejas' },
+      { label: 'Terapia individual', href: '/terapia-individual' },
+      { label: 'Terapia online', href: '/terapia-online' },
+      { label: 'Adolescentes', href: '/terapia-individual#adolescentes' },
+    ],
+  },
+  {
+    title: 'Información',
+    links: [
+      { label: 'Cómo trabajo', href: '/como-trabajo' },
+      { label: 'Honorarios', href: '/preguntas-frecuentes#honorarios' },
+      { label: 'Sobre mí', href: '/sobre-mi' },
+      { label: 'Preguntas frecuentes', href: '/preguntas-frecuentes' },
+    ],
+  },
+  {
+    title: 'Recursos',
+    links: [
+      { label: 'Notas sobre parejas', href: '/notas' },
+      { label: 'Obras sociales', href: '/preguntas-frecuentes#obras-sociales' },
+      { label: 'Cancelaciones', href: '/preguntas-frecuentes#cancelaciones' },
+      { label: 'Modalidad online', href: '/preguntas-frecuentes#online' },
+    ],
+  },
+];
+
+// Schema.org SiteNavigationElement — le dice a Google que estos
+// son links de navegación principal, no contenido del body.
+const navSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SiteNavigationElement',
+  name: footerSections.flatMap((s) => s.links.map((l) => l.label)),
+  url: footerSections.flatMap((s) => s.links.map((l) => `${SITE.url}${l.href}`)),
+};
+---
+
+<footer class="border-t border-line/60 mt-section bg-bg">
+  <div class="container-page py-group">
+    {/* Branding row */}
+    <div class="pb-group border-b border-line/60">
+      <a href="/" class="font-display text-2xl text-ink hover:text-accent transition-colors duration-200">
+        {SITE.fullName}
+      </a>
+      <p class="mt-3 text-ink-soft max-w-md">
+        Psicólogo con enfoque sistémico integrativo. Pareja, individual y
+        adolescente. Atención presencial en Olavarría y online en toda LatAm.
+      </p>
+    </div>
+
+    {/* 4-column grid */}
+    <div class="grid gap-12 md:grid-cols-12 pt-group">
+      {footerSections.map((section) => (
+        <nav class="md:col-span-3" aria-label={section.title}>
+          <h3 class="text-caption text-ink mb-5">{section.title}</h3>
+          <ul class="space-y-3">
+            {section.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[15px] text-ink-soft hover:text-ink transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+
+      {/* Consultorio + contacto */}
+      <div class="md:col-span-3">
+        <h3 class="text-caption text-ink mb-5">Consultorio</h3>
+        <address class="not-italic text-[15px] text-ink-soft leading-relaxed">
+          {SITE.address.street}<br />
+          {SITE.address.city}, {SITE.address.region}<br />
+          {SITE.address.postalCode}
+        </address>
+
+        <ul class="mt-5 space-y-2 text-[15px]">
+          <li>
+            <a
+              href={buildWaUrl('home')}
+              class="text-ink-soft hover:text-ink transition-colors duration-200"
+              rel="noopener"
+              target="_blank"
+            >
+              WhatsApp · {SITE.phone}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${SITE.email}`}
+              class="text-ink-soft hover:text-ink transition-colors duration-200"
+            >
+              {SITE.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={SITE.social.instagram}
+              class="text-ink-soft hover:text-ink transition-colors duration-200"
+              rel="noopener"
+              target="_blank"
+            >
+              Instagram
+            </a>
+          </li>
+        </ul>
+
+        <p class="mt-5 text-caption text-ink-muted">
+          {SITE.matriculaNacional}<br />
+          {SITE.matriculaProvincial}
+        </p>
+      </div>
+    </div>
+
+    {/* Legal row */}
+    <div class="mt-group pt-8 border-t border-line/60 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-caption text-ink-muted">
+      <p>© {year} {SITE.fullName}. Todos los derechos reservados.</p>
+      <p>
+        <a href="/politica-de-privacidad" class="hover:text-ink transition-colors duration-200">
+          Política de privacidad
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(navSchema)} />
+</footer>

@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/site';
+import { buildWaUrl } from '../lib/whatsapp';
+import { buildBreadcrumbSchema } from '../lib/schema';
+
+const url = `${SITE.url}/contacto`;
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Inicio', url: SITE.url },
+  { name: 'Contacto', url },
+]);
+---
+
+<BaseLayout
+  title={`Reservar sesión — ${SITE.fullName}, Psicólogo`}
+  description="Reservá tu sesión con el Lic. Juan Cruz Resch, psicólogo con enfoque sistémico en Olavarría. Atención presencial y online en toda LatAm. WhatsApp o email."
+  extraSchemas={[breadcrumb]}
+>
+  <div class="container-page pt-12">
+    <nav aria-label="Migas de pan" class="text-caption text-ink-muted">
+      <a href="/" class="hover:text-ink transition-colors duration-200">Inicio</a>
+      <span class="mx-2">›</span>
+      <span class="text-ink">Contacto</span>
+    </nav>
+  </div>
+
+  <section class="container-page pt-12 pb-section">
+    <div class="grid gap-12 md:gap-16 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <h1 class="text-section text-ink">
+          Reservá tu sesión.
+        </h1>
+        <p class="mt-8 text-lead">
+          La primera sesión es una entrevista clínica a honorarios
+          regulares. Sirve para definir motivo de consulta y encuadre. No
+          firma compromiso de proceso.
+        </p>
+
+        <div class="mt-group space-y-6">
+          <a
+            href={buildWaUrl('contacto')}
+            rel="noopener"
+            target="_blank"
+            class="flex items-center justify-between border-b border-line py-6 group hover:border-accent transition-colors duration-200"
+          >
+            <div>
+              <p class="text-caption text-ink-muted">Canal principal</p>
+              <p class="mt-2 text-headline text-ink group-hover:text-accent transition-colors duration-200">
+                Escribir por WhatsApp
+              </p>
+              <p class="mt-2 text-[15px] text-ink-soft">
+                {SITE.phone}
+              </p>
+            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+
+          <a
+            href={`mailto:${SITE.email}`}
+            class="flex items-center justify-between border-b border-line py-6 group hover:border-accent transition-colors duration-200"
+          >
+            <div>
+              <p class="text-caption text-ink-muted">Si preferís escribir</p>
+              <p class="mt-2 text-headline text-ink group-hover:text-accent transition-colors duration-200">
+                {SITE.email}
+              </p>
+            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="bg-bg-alt p-8 rounded-image">
+          <p class="text-caption text-accent">Consultorio</p>
+          <address class="mt-4 not-italic text-[17px] leading-relaxed text-ink">
+            {SITE.address.street}<br />
+            {SITE.address.city}, {SITE.address.region}<br />
+            {SITE.address.postalCode}
+          </address>
+
+          <p class="mt-8 text-caption text-accent">Horarios</p>
+          <ul class="mt-4 space-y-1 text-[17px] text-ink-soft">
+            {SITE.hours.map((h) => (
+              <li>{h.day} · {h.open}–{h.close}</li>
+            ))}
+          </ul>
+
+          <p class="mt-8 text-caption text-accent">Matrícula</p>
+          <p class="mt-4 text-[17px] text-ink-soft">
+            {SITE.matriculaNacional}<br />
+            {SITE.matriculaProvincial}
+          </p>
+        </div>
+
+        <div class="mt-8 aspect-square bg-bg-alt rounded-image overflow-hidden flex items-center justify-center">
+          <span class="text-caption text-ink-muted">[Google Maps embed — Rivadavia 2055, Olavarría]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import DataTable from '../components/DataTable.astro';
+import { SITE } from '../lib/site';
+import { buildBreadcrumbSchema } from '../lib/schema';
+import { buildWaUrl } from '../lib/whatsapp';
+
+const url = `${SITE.url}/como-trabajo`;
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Inicio', url: SITE.url },
+  { name: 'Cómo trabajo', url },
+]);
+---
+
+<BaseLayout
+  title={`Cómo trabajo — Sesiones, honorarios y política | ${SITE.fullName}`}
+  description="Cómo es una sesión, cuánto dura un proceso, política de confidencialidad y honorarios. Todo lo que necesitás saber antes de agendar con Juan Resch."
+  extraSchemas={[breadcrumb]}
+>
+  <div class="container-page pt-12">
+    <nav aria-label="Migas de pan" class="text-caption text-ink-muted">
+      <a href="/" class="hover:text-ink transition-colors duration-200">Inicio</a>
+      <span class="mx-2">›</span>
+      <span class="text-ink">Cómo trabajo</span>
+    </nav>
+  </div>
+
+  <section class="container-page pt-12 pb-section">
+    <div class="max-w-3xl">
+      <h1 class="text-section text-ink">Cómo trabajo.</h1>
+      <p class="mt-8 text-lead">
+        [Lorem placeholder — 120-180 palabras. Idea: la mayoría de la gente
+        nunca pisó un consultorio y tiene fantasías de cómo es. Acá te
+        cuento sin vueltas qué pasa, cuánto sale, qué política tengo, qué
+        NO hago.]
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="01" title="La sesión inicial." />
+    <div class="mt-group max-w-prose space-y-4 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        La primera sesión es una entrevista clínica de 60 minutos a
+        honorarios regulares. Sirve para entender el motivo de consulta,
+        mapear el contexto y definir conjuntamente si tiene sentido continuar
+        y bajo qué encuadre. No firma compromiso de proceso.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="02" title="Una sesión típica." />
+    <div class="mt-group max-w-prose space-y-4 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        [Lorem placeholder — formato de una sesión de 60 min: cómo
+        arranca, cómo se ordena, cómo se cierra.]
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="03" title="Cuánto dura un proceso." />
+    <div class="mt-group max-w-prose space-y-4 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        [Lorem placeholder — rangos típicos, factores, cuándo conviene
+        sostener y cuándo conviene cerrar.]
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="04" title="Honorarios y política." />
+    <div class="mt-group max-w-4xl">
+      <DataTable
+        headers={['Concepto', 'Detalle']}
+        rows={[
+          ['Sesión individual / adolescente', `${SITE.sessionDuration.individual} min · ${SITE.pricing.individual} ARS`],
+          ['Sesión de pareja', `${SITE.sessionDuration.pareja} min · ${SITE.pricing.pareja} ARS`],
+          ['Modalidad', 'Presencial en Olavarría o online en toda LatAm (mismo honorario)'],
+          ['Frecuencia sugerida', 'Semanal o quincenal'],
+          ['Cancelaciones', 'Con 24h de anticipación, sin costo. Menos de 24h se cobra el 100% de la sesión.'],
+          ['Obras sociales', '[TBD — confirmar política con Juan]'],
+          ['Formas de pago', 'Transferencia, efectivo, Mercado Pago, Wise (LatAm)'],
+        ]}
+      />
+
+      <p class="mt-4 text-caption text-ink-muted">
+        Honorarios actualizados a {SITE.pricing.actualizado}.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="05" title="Confidencialidad." />
+    <div class="mt-group max-w-prose space-y-4 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        [Lorem placeholder — secreto profesional. En terapia de pareja
+        explicar qué política tenés sobre sesiones individuales dentro del
+        proceso de pareja: ¿lo que se dice en sesión individual queda
+        adentro? ¿se comparte con el otro? Definir.]
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="06" title="Lo que NO hago." />
+    <div class="mt-group max-w-prose space-y-4 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        [Lorem placeholder — poner límites genera trust. Por ejemplo: "no
+        hago peritajes para juicios de divorcio", "no atiendo si hay
+        violencia activa, derivo a colegas especializados", "no doy
+        consejos sobre con quién estar".]
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <div class="max-w-4xl">
+      <h2 class="text-section text-ink">
+        ¿Tiene sentido que hablemos?
+      </h2>
+      <div class="mt-10">
+        <a href={buildWaUrl('comoTrabajo')} class="btn-primary" rel="noopener" target="_blank">
+          Escribir por WhatsApp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../lib/site';
+import { buildArticleSchema, buildBreadcrumbSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const url = `${SITE.url}/notas/${post.slug}`;
+const formattedDate = post.data.pubDate.toLocaleDateString('es-AR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const articleSchema = buildArticleSchema({
+  title: post.data.title,
+  description: post.data.description,
+  url,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.updatedDate?.toISOString(),
+  image: post.data.heroImage,
+});
+
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Inicio', url: SITE.url },
+  { name: 'Notas', url: `${SITE.url}/notas` },
+  { name: post.data.title, url },
+]);
+---
+
+<BaseLayout
+  title={`${post.data.title} — Juan Resch`}
+  description={post.data.description}
+  image={post.data.heroImage}
+  extraSchemas={[articleSchema, breadcrumb]}
+>
+  <div class="container-page pt-12">
+    <nav aria-label="Migas de pan" class="text-caption text-ink-muted">
+      <a href="/" class="hover:text-ink transition-colors duration-200">Inicio</a>
+      <span class="mx-2">›</span>
+      <a href="/notas" class="hover:text-ink transition-colors duration-200">Notas</a>
+      <span class="mx-2">›</span>
+      <span class="text-ink">{post.data.category}</span>
+    </nav>
+  </div>
+
+  <article class="container-page pt-12 pb-section">
+    <header class="max-w-3xl">
+      <p class="text-caption text-ink-muted">
+        {post.data.category} ·
+        <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+        {post.data.readingTime && <span> · {post.data.readingTime}</span>}
+      </p>
+
+      <h1 class="mt-6 text-section text-ink">
+        {post.data.title}
+      </h1>
+
+      <p class="mt-8 text-lead">
+        {post.data.description}
+      </p>
+    </header>
+
+    {post.data.heroImage && (
+      <div class="my-group aspect-[16/9] overflow-hidden rounded-image bg-bg-alt">
+        <img src={post.data.heroImage} alt="" class="w-full h-full object-cover" />
+      </div>
+    )}
+
+    <div class="mt-group prose-article">
+      <Content />
+    </div>
+
+    <footer class="mt-section pt-12 border-t border-line max-w-3xl">
+      <div class="flex flex-col sm:flex-row gap-6 sm:items-center">
+        <div class="w-16 h-16 rounded-full bg-bg-alt flex items-center justify-center text-caption text-ink-muted shrink-0">
+          [Foto]
+        </div>
+        <div>
+          <p class="text-headline text-ink">{SITE.fullName}</p>
+          <p class="text-ink-soft mt-1">{SITE.title} · {SITE.matriculaNacional}</p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <a href="/contacto" class="link-underline text-lg">
+          Agendar primera conversación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

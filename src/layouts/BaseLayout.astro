@@ -1,0 +1,98 @@
+---
+import '../styles/globals.css';
+import { SITE } from '../lib/site';
+import { buildBaseSchema } from '../lib/schema';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  extraSchemas?: Record<string, unknown>[];
+  noIndex?: boolean;
+  preloadImage?: string;
+}
+
+const {
+  title,
+  description,
+  image = SITE.defaultOgImage,
+  canonical,
+  extraSchemas = [],
+  noIndex = false,
+  preloadImage,
+} = Astro.props;
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
+const ogImage = new URL(image, SITE.url).toString();
+const baseSchema = buildBaseSchema();
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noIndex && <meta name="robots" content="noindex" />}
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {/* Theme */}
+    <meta name="theme-color" content="#FBFAF7" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {/* Sitemap */}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {/* Preload hero image for better LCP */}
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
+
+    {/* Schema.org JSON-LD */}
+    <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+    {extraSchemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+
+    {/* Plausible Analytics — captura UTMs automáticamente.
+        Reemplazar 'juanresch.com' cuando esté el dominio activo
+        y crear cuenta en plausible.io */}
+    <script defer data-domain="juanresch.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+  </head>
+  <body class="bg-bg text-ink antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-ink focus:text-bg focus:px-4 focus:py-2 focus:rounded-md"
+    >
+      Saltar al contenido
+    </a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>

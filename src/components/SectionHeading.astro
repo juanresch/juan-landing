@@ -1,0 +1,20 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  align?: 'left' | 'center';
+  as?: 'h2' | 'h3';
+}
+
+const { kicker, title, align = 'left', as: Tag = 'h2' } = Astro.props;
+---
+
+<div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+  {kicker && <p class="text-caption text-accent mb-4">{kicker}</p>}
+  <Tag class="text-section text-ink">{title}</Tag>
+  {Astro.slots.has('default') && (
+    <div class="mt-6 text-lead">
+      <slot />
+    </div>
+  )}
+</div>

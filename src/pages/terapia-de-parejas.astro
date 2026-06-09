@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import DataTable from '../components/DataTable.astro';
+import { SITE } from '../lib/site';
+import {
+  buildServiceSchema,
+  buildFaqSchema,
+  buildBreadcrumbSchema,
+} from '../lib/schema';
+import { buildWaUrl } from '../lib/whatsapp';
+
+const url = `${SITE.url}/terapia-de-parejas`;
+
+const faqs = [
+  {
+    question: '¿Qué pasa si mi pareja no quiere ir?',
+    answer:
+      '[Lorem placeholder — desarrollar respuesta de 120-180 palabras con la perspectiva real de Juan. Idea: empezar a trabajar individualmente sirve igual, muchas veces la otra persona termina sumándose más adelante.]',
+  },
+  {
+    question: '¿Cuánto dura un proceso de terapia de pareja?',
+    answer:
+      '[Lorem placeholder — 120-180 palabras. Idea: depende del momento de la pareja, pero un proceso típico se mueve entre 3 y 9 meses con sesiones semanales o quincenales.]',
+  },
+  {
+    question: '¿Sirve si ya pensamos en separarnos?',
+    answer:
+      '[Lorem placeholder — 120-180 palabras. Idea: sí, incluso más. La terapia ayuda a decidir con claridad y a separarse bien si esa es la decisión.]',
+  },
+  {
+    question: '¿Atendés obras sociales?',
+    answer:
+      '[TBD — confirmar con Juan qué obras sociales acepta o si trabaja con reintegro.]',
+  },
+  {
+    question: '¿Cómo funciona la modalidad online?',
+    answer:
+      '[Lorem placeholder — 120-180 palabras. Idea: por Google Meet o Zoom, ambos miembros pueden estar en la misma habitación o cada uno por su lado, calidad de proceso idéntica a la presencial.]',
+  },
+  {
+    question: '¿Qué pasa si hubo infidelidad?',
+    answer:
+      '[Lorem placeholder — 120-180 palabras. Idea: es uno de los motivos de consulta más frecuentes, se puede trabajar y reconstruir, pero requiere un proceso específico.]',
+  },
+  {
+    question: '¿Cuál es la diferencia con un coach de pareja?',
+    answer:
+      '[Lorem placeholder — 120-180 palabras. Idea: un psicólogo tiene formación clínica, matrícula y secreto profesional. Un coach no necesariamente. En problemas de pareja serios, la diferencia importa.]',
+  },
+  {
+    question: '¿Las sesiones son confidenciales?',
+    answer:
+      '[Lorem placeholder — 120-180 palabras. Idea: sí, secreto profesional total. Detalle importante en parejas: explicar política sobre sesiones individuales dentro del proceso de pareja.]',
+  },
+];
+
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Inicio', url: SITE.url },
+  { name: 'Terapia de parejas', url },
+]);
+
+const service = buildServiceSchema({
+  name: 'Terapia de parejas',
+  description:
+    'Terapia de parejas presencial en Olavarría y online en toda LatAm con el Lic. Juan Resch.',
+  url,
+});
+
+const faqSchema = buildFaqSchema(faqs);
+---
+
+<BaseLayout
+  title="Terapia de parejas en Olavarría — Lic. Juan Cruz Resch"
+  description="Terapia de parejas con enfoque sistémico en Olavarría con el Lic. Juan Cruz Resch. Crisis, comunicación, infidelidad y decisiones. Modalidad presencial en consultorio propio."
+  extraSchemas={[service, faqSchema, breadcrumb]}
+>
+  {/* Breadcrumb visual */}
+  <div class="container-page pt-12">
+    <nav aria-label="Migas de pan" class="text-caption text-ink-muted">
+      <a href="/" class="hover:text-ink transition-colors duration-200">Inicio</a>
+      <span class="mx-2">›</span>
+      <span class="text-ink">Terapia de parejas</span>
+    </nav>
+  </div>
+
+  {/* Hero */}
+  <section class="container-page pt-12 pb-section">
+    <div class="max-w-3xl">
+      <h1 class="text-section text-ink">
+        Terapia de parejas en Olavarría.
+      </h1>
+      <p class="mt-8 text-lead">
+        Sesiones de terapia de pareja con un enfoque sistémico integrativo.
+        Trabajo crisis de comunicación, infidelidad, transiciones de ciclo,
+        sexualidad y decisiones sobre seguir o separarse. Atiendo en
+        consultorio propio en Olavarría (Rivadavia 2055). Soy Lic. Juan
+        Cruz Resch, formado en la Universidad Nacional de Mar del Plata,
+        con especialización en Terapia Sistémica de Pareja por la Escuela
+        Sistémica Argentina.
+      </p>
+    </div>
+  </section>
+
+  {/* Foto consultorio full bleed */}
+  <section class="bg-bg-alt mb-section">
+    <div class="aspect-[16/9] w-full flex items-center justify-center">
+      <span class="text-caption text-ink-muted">
+        [Foto consultorio 16:9 — luz natural, dos sillones]
+      </span>
+    </div>
+  </section>
+
+  {/* Para qué situaciones funciona */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Motivos de consulta"
+      title="¿Para qué situaciones funciona?"
+    />
+
+    <ol class="mt-group max-w-3xl space-y-8">
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">01</span>
+        <div>
+          <h3 class="text-headline text-ink">Crisis de comunicación</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            [Lorem placeholder — 2 líneas describiendo la situación típica.]
+          </p>
+        </div>
+      </li>
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">02</span>
+        <div>
+          <h3 class="text-headline text-ink">Infidelidad</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            [Lorem placeholder — 2 líneas.]
+          </p>
+        </div>
+      </li>
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">03</span>
+        <div>
+          <h3 class="text-headline text-ink">Cambios de ciclo (hijos, mudanzas, jubilación)</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            [Lorem placeholder — 2 líneas.]
+          </p>
+        </div>
+      </li>
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">04</span>
+        <div>
+          <h3 class="text-headline text-ink">Sexualidad</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            [Lorem placeholder — 2 líneas.]
+          </p>
+        </div>
+      </li>
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">05</span>
+        <div>
+          <h3 class="text-headline text-ink">Decisiones sobre separarse</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            [Lorem placeholder — 2 líneas.]
+          </p>
+        </div>
+      </li>
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">06</span>
+        <div>
+          <h3 class="text-headline text-ink">Co-parentalidad post-separación</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            [Lorem placeholder — 2 líneas.]
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* Cómo trabajo */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Enfoque"
+      title="Cómo trabajo."
+    />
+
+    <div class="mt-group max-w-prose space-y-5 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        Desde el enfoque sistémico, una pareja no es la suma de dos
+        personas: es un sistema con su propia historia, sus propias reglas
+        no escritas y sus propios modos de regular la cercanía. Cuando
+        aparece el síntoma — una pelea recurrente, una distancia que crece,
+        una infidelidad — no lo leo como "el problema de uno". Lo leo como
+        la forma que encontró el sistema para sostenerse.
+      </p>
+      <p>
+        En la sesión combino dos momentos: la reflexión sobre lo que pasa
+        entre los dos y la búsqueda de estrategias concretas para sostener
+        el cambio entre una sesión y la siguiente. El proceso no consiste
+        en darles consejos sobre qué hacer, sino en ayudarlos a ver lo que
+        ya está pasando.
+      </p>
+      <p>
+        Tampoco trabajo desde la neutralidad fría. Cuando algo no funciona,
+        lo digo. Cuando algo está bien encaminado, también. La idea es
+        avanzar — no validar lugares.
+      </p>
+    </div>
+  </section>
+
+  {/* Modalidades y honorarios */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Logística"
+      title="Modalidades y honorarios."
+    />
+
+    <div class="mt-group max-w-4xl">
+      <DataTable
+        headers={['Modalidad', 'Duración', 'Frecuencia sugerida', 'Honorarios']}
+        rows={[
+          ['Presencial en Olavarría', `${SITE.sessionDuration.pareja} minutos`, 'Semanal o quincenal', `${SITE.pricing.pareja} ARS`],
+        ]}
+      />
+
+      <p class="mt-4 text-caption text-ink-muted">
+        Honorarios actualizados a {SITE.pricing.actualizado}.
+      </p>
+
+      <div class="mt-8 max-w-prose space-y-4 text-ink-soft">
+        <p>
+          La terapia de pareja la trabajo principalmente en modalidad
+          presencial, en consultorio en Olavarría (Rivadavia 2055). La
+          presencia física aporta información clínica relevante — gestos,
+          silencios, distancia corporal — que se pierde en pantalla y
+          que en pareja muchas veces es lo que más importa.
+        </p>
+        <p>
+          La primera sesión es una entrevista clínica de {SITE.sessionDuration.pareja} minutos a
+          honorarios regulares. Sirve para entender el motivo de consulta
+          y definir conjuntamente si tiene sentido continuar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Preguntas frecuentes"
+      title="Lo que más me preguntan antes de empezar."
+    />
+
+    <div class="mt-group max-w-4xl">
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  {/* Cierre */}
+  <section class="container-page py-section">
+    <div class="max-w-4xl">
+      <h2 class="text-section text-ink">
+        Si querés consultar, agendamos una sesión.
+      </h2>
+      <div class="mt-10">
+        <a href={buildWaUrl('pareja')} class="btn-primary" rel="noopener" target="_blank">
+          Escribir por WhatsApp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

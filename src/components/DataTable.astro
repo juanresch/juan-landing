@@ -1,0 +1,38 @@
+---
+interface Props {
+  headers: string[];
+  rows: string[][];
+  caption?: string;
+}
+
+const { headers, rows, caption } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full border-collapse text-left">
+    {caption && <caption class="sr-only">{caption}</caption>}
+    <thead>
+      <tr class="border-b border-line">
+        {headers.map((h) => (
+          <th class="text-caption text-ink-soft py-3 pr-6 font-medium">{h}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr class="border-b border-line/60">
+          {row.map((cell, idx) => (
+            <td
+              class:list={[
+                'py-4 pr-6 text-[17px] leading-relaxed',
+                idx === 0 ? 'text-ink' : 'text-ink-soft',
+              ]}
+            >
+              {cell}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { SITE } from '../lib/site';
+import { buildBreadcrumbSchema } from '../lib/schema';
+import { buildWaUrl } from '../lib/whatsapp';
+import juanRetrato from '../assets/juan-retrato.jpg';
+
+const url = `${SITE.url}/sobre-mi`;
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Inicio', url: SITE.url },
+  { name: 'Sobre mí', url },
+]);
+---
+
+<BaseLayout
+  title={`Sobre Juan Cruz Resch — Psicólogo en Olavarría`}
+  description="Lic. en Psicología (UNMdP) con especialización en terapia sistémica de pareja por la Escuela Sistémica Argentina. Atiende parejas, adultos y adolescentes en Olavarría y online."
+  extraSchemas={[breadcrumb]}
+>
+  <div class="container-page pt-12">
+    <nav aria-label="Migas de pan" class="text-caption text-ink-muted">
+      <a href="/" class="hover:text-ink transition-colors duration-200">Inicio</a>
+      <span class="mx-2">›</span>
+      <span class="text-ink">Sobre mí</span>
+    </nav>
+  </div>
+
+  <section class="container-page pt-12 pb-section">
+    <div class="grid gap-12 md:gap-16 md:grid-cols-12 items-start">
+      <div class="md:col-span-5">
+        <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden sticky top-8">
+          <Image
+            src={juanRetrato}
+            alt="Lic. Juan Cruz Resch, psicólogo en Olavarría"
+            class="w-full h-full object-cover"
+            widths={[400, 600, 800, 1000]}
+            sizes="(max-width: 768px) 90vw, 500px"
+            loading="lazy"
+            quality={80}
+            formats={['avif', 'webp']}
+          />
+        </div>
+      </div>
+
+      <div class="md:col-span-7">
+        <h1 class="text-section text-ink">
+          Soy Juan Cruz Resch.
+        </h1>
+
+        <div class="mt-8 space-y-5 text-[18px] leading-relaxed text-ink-soft max-w-prose">
+          <p>
+            Soy psicólogo, formado en la Universidad Nacional de Mar del
+            Plata. Atiendo en consultorio propio en Olavarría y online en
+            toda LatAm.
+          </p>
+          <p>
+            Mi práctica se ubica en la psicoterapia integrativa con base
+            sistémica. Trabajo con parejas, adultos y adolescentes desde los
+            12 años.
+          </p>
+          <p>
+            La mirada sistémica entiende que ningún síntoma — la ansiedad de
+            uno, el malestar del otro, la distancia que crece — se explica
+            de manera aislada. Siempre ocurre dentro de un vínculo: la
+            pareja, la familia, el trabajo, la propia historia. El trabajo
+            terapéutico consiste en hacer visible esa red y desde ahí abrir
+            opciones de cambio.
+          </p>
+          <p>
+            En la sesión combino dos momentos clínicos: la reflexión sobre
+            lo que está ocurriendo y la búsqueda de estrategias concretas
+            para sostener el cambio una vez que termina el encuentro.
+            Cuando el cuadro lo requiere, sumo herramientas del psicoanálisis
+            y del enfoque cognitivo-conductual.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading kicker="Formación" title="Trayectoria académica." />
+
+    <dl class="mt-group max-w-3xl divide-y divide-line/80">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
+        <dt class="text-caption text-ink-muted">Título de grado</dt>
+        <dd class="md:col-span-2 text-ink">
+          {SITE.tituloGrado}<br />
+          <span class="text-ink-soft">{SITE.universidad}</span>
+        </dd>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
+        <dt class="text-caption text-ink-muted">Especialización</dt>
+        <dd class="md:col-span-2 text-ink">
+          {SITE.especializaciones[0].titulo}<br />
+          <span class="text-ink-soft">
+            {SITE.especializaciones[0].institucion} ·
+            {SITE.especializaciones[0].horas} horas ·
+            {SITE.especializaciones[0].anio}
+          </span>
+        </dd>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
+        <dt class="text-caption text-ink-muted">Matrículas</dt>
+        <dd class="md:col-span-2 text-ink">
+          {SITE.matriculaNacional} · {SITE.matriculaProvincial}
+        </dd>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
+        <dt class="text-caption text-ink-muted">Orientación teórica</dt>
+        <dd class="md:col-span-2 text-ink">
+          {SITE.orientacionTeorica}<br />
+          <span class="text-ink-soft">Con integración de psicoanálisis y enfoque cognitivo-conductual según el cuadro</span>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Población"
+      title="A quiénes atiendo."
+    />
+
+    <div class="mt-group grid gap-12 md:grid-cols-2 max-w-4xl">
+      <div>
+        <h3 class="text-headline text-ink mb-4">Atiendo</h3>
+        <ul class="space-y-3 text-[17px] text-ink-soft">
+          {SITE.atiende.map((item) => (
+            <li class="flex gap-3">
+              <span class="text-accent">·</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-headline text-ink mb-4">No atiendo</h3>
+        <ul class="space-y-3 text-[17px] text-ink-soft">
+          {SITE.noAtiende.map((item) => (
+            <li class="flex gap-3">
+              <span class="text-accent-warm">·</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-[15px] text-ink-muted leading-relaxed">
+          Si tu caso requiere otra especialidad, te recomiendo colegas con
+          la formación específica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-section">
+    <div class="max-w-4xl">
+      <h2 class="text-section text-ink">
+        Si querés consultar, agendamos una sesión.
+      </h2>
+      <div class="mt-10">
+        <a href={buildWaUrl('sobreMi')} class="btn-primary" rel="noopener" target="_blank">
+          Escribir por WhatsApp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

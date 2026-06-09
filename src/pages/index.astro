@@ -1,0 +1,237 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { SITE } from '../lib/site';
+import { buildWaUrl } from '../lib/whatsapp';
+import juanRetrato from '../assets/juan-retrato.jpg';
+---
+
+<BaseLayout
+  title={`${SITE.fullName} — Psicólogo en Olavarría`}
+  description="Lic. Juan Cruz Resch — Psicólogo con enfoque sistémico integrativo. Pareja, individual y adolescente. Atención presencial en Olavarría y online en toda LatAm."
+>
+  {/* ============ HERO ============ */}
+  <section class="container-page pt-16 md:pt-24 pb-section">
+    <div class="grid gap-12 md:gap-16 md:grid-cols-12 items-end">
+      <div class="md:col-span-7 md:col-start-1">
+        <p class="text-caption text-accent mb-6">Psicoterapia con enfoque sistémico</p>
+        <h1 class="text-hero text-ink">
+          Psicólogo en Olavarría — pareja, individual y adolescente.
+        </h1>
+        <p class="mt-8 text-lead max-w-xl">
+          Soy Juan Cruz Resch, Lic. en Psicología por la Universidad
+          Nacional de Mar del Plata, con especialización en Terapia
+          Sistémica de Pareja. Atiendo presencial en Olavarría y online en
+          toda LatAm.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
+          <a href={buildWaUrl('home')} class="btn-primary" rel="noopener" target="_blank">
+            Escribir por WhatsApp
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <a href="/como-trabajo" class="btn-secondary">
+            Cómo trabajo
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden">
+          <Image
+            src={juanRetrato}
+            alt="Lic. Juan Cruz Resch, psicólogo"
+            class="w-full h-full object-cover"
+            widths={[400, 600, 800, 1000]}
+            sizes="(max-width: 768px) 90vw, 600px"
+            loading="eager"
+            fetchpriority="high"
+            quality={80}
+            formats={['avif', 'webp']}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ============ Motivos de consulta ============ */}
+  <section class="bg-bg-alt py-section">
+    <div class="container-page">
+      <SectionHeading
+        kicker="Motivos de consulta"
+        title="Algunas situaciones que se trabajan en consulta."
+      />
+
+      <ul class="mt-group grid gap-8 md:grid-cols-2 max-w-4xl">
+        <li class="border-t border-line pt-6">
+          <p class="text-[19px] text-ink leading-relaxed">
+            Crisis de pareja, conflictos sostenidos, infidelidad.
+          </p>
+        </li>
+        <li class="border-t border-line pt-6">
+          <p class="text-[19px] text-ink leading-relaxed">
+            Cuadros de ansiedad o sensación de agobio constante.
+          </p>
+        </li>
+        <li class="border-t border-line pt-6">
+          <p class="text-[19px] text-ink leading-relaxed">
+            Vínculos que desgastan y patrones que se repiten.
+          </p>
+        </li>
+        <li class="border-t border-line pt-6">
+          <p class="text-[19px] text-ink leading-relaxed">
+            Momentos de decisión — vincular, vocacional, vital — sin claridad.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  {/* ============ Servicios ============ */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Servicios"
+      title="Lo que se puede trabajar."
+    />
+
+    <div class="mt-group grid gap-6 md:grid-cols-3">
+      <ServiceCard
+        href="/terapia-de-parejas"
+        title="Terapia de parejas"
+        description="Crisis de comunicación, infidelidad, transiciones de ciclo, decisiones sobre seguir o separarse. Sesiones de 75 minutos, principalmente presencial en Olavarría."
+        variant="small"
+      />
+      <ServiceCard
+        href="/terapia-individual"
+        title="Terapia individual"
+        description="Procesos personales con adultos: ansiedad, vínculos, sentido de vida, desarrollo personal. Sesiones de 50 minutos, presencial u online."
+        variant="small"
+      />
+      <ServiceCard
+        href="/terapia-individual#adolescentes"
+        title="Adolescentes"
+        description="Acompañamiento clínico a adolescentes desde los 12 años. Misma orientación sistémica, adaptada al momento vital."
+        variant="small"
+      />
+    </div>
+  </section>
+
+  {/* ============ Sobre Juan (versión home) ============ */}
+  <section class="container-page py-section">
+    <div class="grid gap-12 md:gap-16 md:grid-cols-12 items-center">
+      <div class="md:col-span-5">
+        <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden flex items-center justify-center">
+          <span class="text-caption text-ink-muted">
+            [Foto contextual de Juan trabajando — 4:5]
+          </span>
+        </div>
+      </div>
+
+      <div class="md:col-span-7">
+        <p class="text-caption text-accent mb-4">Sobre mí</p>
+        <h2 class="text-section text-ink">
+          Psicólogo formado en la Universidad Nacional de Mar del Plata, con
+          especialización en terapia sistémica de pareja.
+        </h2>
+        <div class="mt-6 space-y-5 text-[17px] leading-relaxed text-ink-soft max-w-prose">
+          <p>
+            Mi práctica clínica se ubica en la psicoterapia integrativa con
+            base sistémica. La mirada sistémica permite contextualizar cada
+            acción, pensamiento o emoción dentro de los vínculos en los que
+            ocurren — no separa al síntoma de la red que lo sostiene.
+          </p>
+          <p>
+            Cursé la Especialización en Terapia Sistémica de Pareja en la
+            Escuela Sistémica Argentina y complemento mi trabajo con
+            herramientas del psicoanálisis y la terapia cognitivo-conductual
+            cuando el cuadro lo requiere.
+          </p>
+        </div>
+        <div class="mt-8">
+          <a href="/sobre-mi" class="link-underline">
+            Ver formación y enfoque completo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ============ Enfoque sistémico (no parejas-only) ============ */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Enfoque"
+      title="Cómo trabajo, en una idea."
+    />
+
+    <div class="mt-group max-w-prose space-y-5 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        El enfoque sistémico entiende que ningún síntoma — una ansiedad
+        sostenida, un conflicto de pareja, un momento de bloqueo personal —
+        se explica de manera aislada. Siempre ocurre dentro de una red de
+        vínculos, contextos e historias que lo sostienen.
+      </p>
+      <p>
+        Mi trabajo consiste en hacer visible esa red para abrir desde ahí
+        opciones de cambio. Combino reflexión sobre lo que está pasando con
+        la búsqueda de estrategias concretas que sostengan el movimiento
+        entre una sesión y la siguiente.
+      </p>
+    </div>
+  </section>
+
+  {/* ============ Reviews (placeholder hasta tener reales) ============ */}
+  <section class="container-page py-section">
+    <div class="max-w-3xl">
+      <p class="text-caption text-accent mb-6">Reseñas</p>
+      <blockquote>
+        <p class="font-display text-2xl md:text-3xl text-ink leading-snug">
+          "Lorem ipsum dolor sit amet — placeholder hasta que tengamos las
+          primeras reseñas reales de Google. Una cita editorial larga, no un
+          carrusel de estrellitas."
+        </p>
+        <footer class="mt-6 text-caption text-ink-muted">
+          — [Nombre] · [Mes/Año]
+        </footer>
+      </blockquote>
+      <p class="mt-10">
+        <a href="https://g.page/r/PLACEHOLDER/review" class="link-underline" rel="noopener" target="_blank">
+          Ver todas en Google
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  {/* ============ Cierre tipográfico ============ */}
+  <section class="container-page py-section">
+    <div class="max-w-4xl">
+      <h2 class="text-section text-ink">
+        Si querés consultar, agendamos una sesión.
+      </h2>
+      <p class="mt-6 text-lead max-w-xl">
+        La primera sesión es una sesión clínica de evaluación, de 60 minutos,
+        a honorarios regulares. Sirve para entender el motivo de consulta y
+        definir si tiene sentido continuar.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
+        <a href="/contacto" class="btn-primary">
+          Reservar sesión
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/como-trabajo" class="btn-secondary">
+          Ver honorarios
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

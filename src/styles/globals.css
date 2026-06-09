@@ -1,0 +1,284 @@
+@import '@fontsource/inter-tight/400.css';
+@import '@fontsource/inter-tight/500.css';
+@import '@fontsource/inter-tight/600.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Color — Psicología cálida moderna
+       Todos los valores cumplen WCAG AA (4.5:1) sobre --bg #FBFAF7 */
+    --bg: #FBFAF7;            /* Blanco roto, limpio cálido */
+    --bg-alt: #F1ECE0;        /* Beige soft (más contraste que antes) */
+    --ink: #1F1F1F;           /* Tinta principal */
+    --ink-soft: #4A4A48;      /* Texto secundario — 8.7:1 */
+    --ink-muted: #6B6B66;     /* Captions, metadata — 4.7:1 */
+    --accent: #4F6541;        /* Sage profundo (oscurecido para 4.5:1+ sobre bg) */
+    --accent-soft: #7D9A6E;   /* Sage medio — para fondos/decoración (NO texto sobre bg) */
+    --accent-warm: #B6634A;   /* Terracota — segundo acento, oscurecido para texto */
+    --line: #DDD6C7;          /* Borders sutiles, más visibles */
+
+    /* Type */
+    --font-display: 'Inter Tight', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Space */
+    --space-tight: 12px;
+    --space-element: 24px;
+    --space-group: 64px;
+    --space-section: 112px;
+
+    /* Radius — Orgánico, suave */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-image: 18px;
+    --radius-pill: 999px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --space-section: 64px;
+      --space-group: 40px;
+      --space-element: 20px;
+    }
+  }
+
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .text-hero {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .text-section {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .text-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(20px, 2.5vw, 24px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .text-lead {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(18px, 1.8vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .text-body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .text-caption {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 96px;
+    }
+  }
+
+  /* Botón pill principal — psicología moderna usa pills */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    transition: background 200ms ease, transform 200ms ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--ink);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 14px 28px;
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-pill);
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .link-underline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 200ms ease, border-color 200ms ease;
+  }
+
+  .link-underline:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* Prose for blog content */
+  .prose-article {
+    max-width: 680px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .prose-article h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.25;
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose-article h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.4em;
+  }
+
+  .prose-article p {
+    margin-bottom: 1.25em;
+  }
+
+  .prose-article a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-soft);
+  }
+
+  .prose-article ul,
+  .prose-article ol {
+    margin: 1.25em 0;
+    padding-left: 1.5em;
+  }
+
+  .prose-article ul li {
+    list-style: disc;
+    margin-bottom: 0.5em;
+  }
+
+  .prose-article ol li {
+    list-style: decimal;
+    margin-bottom: 0.5em;
+  }
+
+  .prose-article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-size: 16px;
+  }
+
+  .prose-article table th,
+  .prose-article table td {
+    border-bottom: 1px solid var(--line);
+    padding: 12px 8px;
+    text-align: left;
+  }
+
+  .prose-article table th {
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+}
