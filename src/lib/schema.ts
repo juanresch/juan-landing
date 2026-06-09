@@ -10,7 +10,6 @@ const psychologistEntity = {
   image: `${SITE.url}/images/juan-retrato.jpg`,
   url: SITE.url,
   telephone: SITE.phone,
-  email: SITE.email,
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
