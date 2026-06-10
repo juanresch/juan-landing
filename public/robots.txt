@@ -1,4 +1,4 @@
-# https://juanresch.com — Lic. Juan Cruz Resch, Psicólogo
+# https://www.juanresch.com — Lic. Juan Cruz Resch, Psicólogo
 
 # Crawlers generales
 User-agent: *
@@ -43,7 +43,7 @@ User-agent: meta-externalagent
 Allow: /
 
 # Sitemap
-Sitemap: https://juanresch.com/sitemap-index.xml
+Sitemap: https://www.juanresch.com/sitemap-index.xml
 
 # Host preferido
-Host: https://juanresch.com
+Host: https://www.juanresch.com

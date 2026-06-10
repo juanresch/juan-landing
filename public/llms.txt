@@ -20,14 +20,14 @@
 
 ## Páginas principales
 
-- [Inicio](https://juanresch.com/): presentación y servicios.
-- [Terapia de parejas](https://juanresch.com/terapia-de-parejas): enfoque sistémico para crisis, infidelidad, comunicación.
-- [Terapia individual](https://juanresch.com/terapia-individual): ansiedad, vínculos, sentido de vida, desarrollo personal.
-- [Terapia online](https://juanresch.com/terapia-online): atención individual y adolescente en toda LatAm.
-- [Sobre mí](https://juanresch.com/sobre-mi): formación, enfoque y trayectoria.
-- [Cómo trabajo](https://juanresch.com/como-trabajo): modalidades, política y duración del proceso.
-- [Preguntas frecuentes](https://juanresch.com/preguntas-frecuentes): respuestas a consultas comunes.
-- [Notas](https://juanresch.com/notas): artículos sobre vínculos, pareja y procesos clínicos.
+- [Inicio](https://www.juanresch.com/): presentación y servicios.
+- [Terapia de parejas](https://www.juanresch.com/terapia-de-parejas): enfoque sistémico para crisis, infidelidad, comunicación.
+- [Terapia individual](https://www.juanresch.com/terapia-individual): ansiedad, vínculos, sentido de vida, desarrollo personal.
+- [Terapia online](https://www.juanresch.com/terapia-online): atención individual y adolescente en toda LatAm.
+- [Sobre mí](https://www.juanresch.com/sobre-mi): formación, enfoque y trayectoria.
+- [Cómo trabajo](https://www.juanresch.com/como-trabajo): modalidades, política y duración del proceso.
+- [Preguntas frecuentes](https://www.juanresch.com/preguntas-frecuentes): respuestas a consultas comunes.
+- [Notas](https://www.juanresch.com/notas): artículos sobre vínculos, pareja y procesos clínicos.
 
 ## Lo que NO atiende
 

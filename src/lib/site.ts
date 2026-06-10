@@ -5,7 +5,7 @@
 // Los `[TBD]` son los datos que faltan y hay que pedirle directamente a Juan.
 
 export const SITE = {
-  url: 'https://juanresch.com',
+  url: 'https://www.juanresch.com',
   name: 'Juan Cruz Resch',
   fullName: 'Lic. Juan Cruz Resch',
   shortName: 'Juan Cruz',

@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://juanresch.com',
+  site: 'https://www.juanresch.com',
   trailingSlash: 'never',
   integrations: [
     tailwind({ applyBaseStyles: false }),
