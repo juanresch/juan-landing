@@ -15,8 +15,8 @@ const breadcrumb = buildBreadcrumbSchema([
 ---
 
 <BaseLayout
-  title={`Sobre Juan Cruz Resch — Psicólogo en Olavarría`}
-  description="Lic. en Psicología (UNMdP) con especialización en terapia sistémica de pareja por la Escuela Sistémica Argentina. Atiende parejas, adultos y adolescentes en Olavarría y online."
+  title="Sobre Juan Cruz Resch — Psicólogo en Olavarría"
+  description="Lic. en Psicología (UNMdP) con especialización en terapia sistémica de pareja. Atiende parejas, adultos y adolescentes en Olavarría y online."
   extraSchemas={[breadcrumb]}
 >
   <div class="container-page pt-12">
@@ -88,15 +88,29 @@ const breadcrumb = buildBreadcrumbSchema([
         <dt class="text-caption text-ink-muted">Título de grado</dt>
         <dd class="md:col-span-2 text-ink">
           {SITE.tituloGrado}<br />
-          <span class="text-ink-soft">{SITE.universidad}</span>
+          <a
+            href="https://www.mdp.edu.ar/index.php/areas-academicas/facultades/psicologia"
+            class="text-link"
+            rel="noopener"
+            target="_blank"
+          >
+            {SITE.universidad}
+          </a>
         </dd>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
         <dt class="text-caption text-ink-muted">Especialización</dt>
         <dd class="md:col-span-2 text-ink">
           {SITE.especializaciones[0].titulo}<br />
-          <span class="text-ink-soft">
-            {SITE.especializaciones[0].institucion} ·
+          <a
+            href="https://www.escuelasistemica.com.ar/"
+            class="text-link"
+            rel="noopener"
+            target="_blank"
+          >
+            {SITE.especializaciones[0].institucion}
+          </a>
+          <span class="text-ink-soft">·
             {SITE.especializaciones[0].horas} horas ·
             {SITE.especializaciones[0].anio}
           </span>
