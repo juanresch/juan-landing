@@ -1,12 +1,21 @@
 import { SITE } from './site';
 
-const PSYCHOLOGIST_ID = `${SITE.url}/#psychologist`;
+// IDs para referenciar entidades cruzadas en el @graph
+const BUSINESS_ID = `${SITE.url}/#business`;
+const PERSON_ID = `${SITE.url}/#person`;
 const WEBSITE_ID = `${SITE.url}/#website`;
 
-const psychologistEntity = {
-  '@type': 'Psychologist',
-  '@id': PSYCHOLOGIST_ID,
-  name: SITE.fullName,
+/**
+ * Entidad negocio (el consultorio).
+ * Usamos LocalBusiness + MedicalBusiness (ambos tipos válidos en schema.org)
+ * en vez del inválido "Psychologist".
+ */
+const businessEntity = {
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': BUSINESS_ID,
+  name: 'Lic. Juan Cruz Resch — Psicólogo',
+  description:
+    'Consultorio de psicología con orientación sistémica integrativa. Atención a parejas, adultos y adolescentes en Olavarría, Buenos Aires.',
   image: `${SITE.url}/images/juan-retrato.jpg`,
   url: SITE.url,
   telephone: SITE.phone,
@@ -24,12 +33,36 @@ const psychologistEntity = {
     latitude: SITE.address.latitude,
     longitude: SITE.address.longitude,
   },
+  hasMap: SITE.address.googleMapsUrl,
   areaServed: [
     { '@type': 'City', name: 'Olavarría' },
     { '@type': 'Country', name: 'Argentina' },
     { '@type': 'Place', name: 'LatAm (online)' },
   ],
-  medicalSpecialty: 'Psychology',
+  founder: { '@id': PERSON_ID },
+  employee: { '@id': PERSON_ID },
+};
+
+/**
+ * Entidad persona (Juan como profesional).
+ * Acá van las credenciales, formación y áreas de conocimiento.
+ */
+const personEntity = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: SITE.fullName,
+  givenName: 'Juan Cruz',
+  familyName: 'Resch',
+  jobTitle: 'Psicólogo',
+  image: `${SITE.url}/images/juan-retrato.jpg`,
+  url: SITE.url,
+  telephone: SITE.phone,
+  workLocation: { '@id': BUSINESS_ID },
+  worksFor: { '@id': BUSINESS_ID },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: SITE.universidad,
+  },
   hasCredential: [
     {
       '@type': 'EducationalOccupationalCredential',
@@ -64,6 +97,7 @@ const psychologistEntity = {
     'Sentido de vida',
     'Desarrollo personal',
   ],
+  knowsLanguage: ['Spanish'],
 };
 
 const websiteEntity = {
@@ -72,13 +106,14 @@ const websiteEntity = {
   url: SITE.url,
   name: SITE.name,
   inLanguage: 'es-AR',
-  publisher: { '@id': PSYCHOLOGIST_ID },
+  publisher: { '@id': PERSON_ID },
+  about: { '@id': PERSON_ID },
 };
 
 export function buildBaseSchema() {
   return {
     '@context': 'https://schema.org',
-    '@graph': [psychologistEntity, websiteEntity],
+    '@graph': [businessEntity, personEntity, websiteEntity],
   };
 }
 
@@ -93,7 +128,7 @@ export function buildServiceSchema(opts: {
     name: opts.name,
     description: opts.description,
     url: opts.url,
-    provider: { '@id': PSYCHOLOGIST_ID },
+    provider: { '@id': PERSON_ID },
     areaServed: [
       { '@type': 'City', name: 'Olavarría' },
       { '@type': 'Country', name: 'Argentina' },
@@ -133,8 +168,8 @@ export function buildArticleSchema(opts: {
     image: opts.image ?? `${SITE.url}${SITE.defaultOgImage}`,
     datePublished: opts.datePublished,
     dateModified: opts.dateModified ?? opts.datePublished,
-    author: { '@id': PSYCHOLOGIST_ID },
-    publisher: { '@id': PSYCHOLOGIST_ID },
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': PERSON_ID },
     mainEntityOfPage: opts.url,
   };
 }
