@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node -e \"const fs=require('fs'),p=require('path');const dir='public/images';fs.mkdirSync(dir,{recursive:true});fs.copyFileSync('src/assets/juan-retrato.jpg',p.join(dir,'juan-retrato.jpg'));console.log('Copied src/assets/juan-retrato.jpg → public/images/');\"",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

@@ -73,7 +73,12 @@ const breadcrumb = buildBreadcrumbSchema([
 
     {post.data.heroImage && (
       <div class="my-group aspect-[16/9] overflow-hidden rounded-image bg-bg-alt">
-        <img src={post.data.heroImage} alt="" class="w-full h-full object-cover" />
+        <img
+          src={post.data.heroImage}
+          alt={post.data.title}
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
       </div>
     )}
 

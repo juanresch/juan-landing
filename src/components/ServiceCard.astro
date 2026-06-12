@@ -23,7 +23,7 @@ const isLarge = variant === 'large';
     <div class:list={['relative w-full overflow-hidden', isLarge ? 'aspect-[16/9]' : 'aspect-[4/3]']}>
       <img
         src={image}
-        alt=""
+        alt={title}
         class="absolute inset-0 w-full h-full object-cover"
         loading="lazy"
       />
