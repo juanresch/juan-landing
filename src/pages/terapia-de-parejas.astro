@@ -17,42 +17,44 @@ const faqs = [
   {
     question: '¿Qué pasa si mi pareja no quiere ir?',
     answer:
-      '[Lorem placeholder — desarrollar respuesta de 120-180 palabras con la perspectiva real de Juan. Idea: empezar a trabajar individualmente sirve igual, muchas veces la otra persona termina sumándose más adelante.]',
+      'Si una de las partes no quiere iniciar el proceso, no tiene sentido forzar la consulta. En esos casos sugiero empezar por un espacio individual: muchas veces, cuando algo de la dinámica empieza a moverse en uno solo, el otro miembro se suma más adelante con otra disposición. Si eso no ocurre, el trabajo individual también es útil para tomar decisiones más claras respecto al vínculo.',
   },
   {
     question: '¿Cuánto dura un proceso de terapia de pareja?',
     answer:
-      '[Lorem placeholder — 120-180 palabras. Idea: depende del momento de la pareja, pero un proceso típico se mueve entre 3 y 9 meses con sesiones semanales o quincenales.]',
+      'No hay una duración estándar. Un proceso típico se mueve entre 3 y 9 meses con sesiones semanales o quincenales, dependiendo del motivo de consulta y del momento de la pareja. No es un tratamiento de por vida: el cierre se conversa cuando el espacio cumplió su función.',
   },
   {
     question: '¿Sirve si ya pensamos en separarnos?',
     answer:
-      '[Lorem placeholder — 120-180 palabras. Idea: sí, incluso más. La terapia ayuda a decidir con claridad y a separarse bien si esa es la decisión.]',
+      'Sí, incluso más. La terapia ayuda a decidir con claridad si la separación es realmente el paso a dar, o si se está respondiendo a un momento crítico que se puede trabajar. Y si la decisión es separarse, también ayuda a que el cierre del vínculo se haga de manera ordenada, sobre todo cuando hay hijos o proyectos compartidos.',
   },
   {
-    question: '¿Atendés obras sociales?',
+    id: 'pareja-toxica',
+    question: '¿Atendés parejas calificadas como "tóxicas"?',
     answer:
-      '[TBD — confirmar con Juan qué obras sociales acepta o si trabaja con reintegro.]',
+      'Sí, y suele ser un buen motivo para consultar. La categoría se volvió de uso cotidiano y muchas parejas llegan con esa etiqueta puesta. Mi trabajo en esos casos es entender qué sostiene esa dinámica de desencuentro antes de definir si el vínculo se puede transformar o no. Hay vínculos efectivamente dañinos que requieren intervención específica, y hay vínculos atravesados por etiquetas rápidas que cierran preguntas que vale la pena sostener.',
   },
   {
-    question: '¿Cómo funciona la modalidad online?',
+    id: 'no-monogamas',
+    question: '¿Atendés parejas no monógamas, abiertas o poliamorosas?',
     answer:
-      '[Lorem placeholder — 120-180 palabras. Idea: por Google Meet o Zoom, ambos miembros pueden estar en la misma habitación o cada uno por su lado, calidad de proceso idéntica a la presencial.]',
+      'Sí. Trabajo con parejas en cualquier configuración: monógamas, abiertas, no monógamas y relaciones poliamorosas. Son parte habitual de las consultas que llegan hoy, y el enfoque sistémico es especialmente útil para trabajar con sistemas vinculares que no se reducen al modelo clásico.',
   },
   {
     question: '¿Qué pasa si hubo infidelidad?',
     answer:
-      '[Lorem placeholder — 120-180 palabras. Idea: es uno de los motivos de consulta más frecuentes, se puede trabajar y reconstruir, pero requiere un proceso específico.]',
+      'La infidelidad es uno de los motivos de consulta más frecuentes. Se puede trabajar, aunque requiere un proceso específico que sostiene varias fases: la crisis inicial, la reconstrucción de la confianza y la revisión de lo que estaba pasando en el vínculo antes del episodio. No todas las parejas eligen continuar después de una infidelidad; las que lo hacen, suelen hacerlo con un vínculo distinto del que tenían antes.',
   },
   {
     question: '¿Cuál es la diferencia con un coach de pareja?',
     answer:
-      '[Lorem placeholder — 120-180 palabras. Idea: un psicólogo tiene formación clínica, matrícula y secreto profesional. Un coach no necesariamente. En problemas de pareja serios, la diferencia importa.]',
+      'Un psicólogo tiene formación clínica universitaria, matrícula profesional regulada por el Estado y obligación de secreto profesional. Un coach de pareja puede tener formaciones diversas, pero no está regulado clínicamente. En problemas de pareja serios — crisis, infidelidad, decisiones de separación, vínculos sostenidos en el conflicto — la diferencia entre ambos abordajes importa.',
   },
   {
     question: '¿Las sesiones son confidenciales?',
     answer:
-      '[Lorem placeholder — 120-180 palabras. Idea: sí, secreto profesional total. Detalle importante en parejas: explicar política sobre sesiones individuales dentro del proceso de pareja.]',
+      'Sí, todo lo conversado en sesión está amparado por el secreto profesional, con las excepciones previstas por la ley. En terapia de pareja, mi política es de transparencia entre las partes: no trabajo con sesiones individuales como regla, y si por excepción ocurre, lo conversado no constituye un secreto frente al otro miembro de la pareja.',
   },
 ];
 
@@ -73,7 +75,7 @@ const faqSchema = buildFaqSchema(faqs);
 
 <BaseLayout
   title="Terapia de parejas en Olavarría — Lic. Juan Cruz Resch"
-  description="Terapia de parejas con enfoque sistémico en Olavarría. Crisis, comunicación, infidelidad y decisiones. Modalidad presencial. Lic. Juan Cruz Resch."
+  description="Terapia de parejas con enfoque sistémico en Olavarría. Crisis, comunicación, infidelidad, decisiones y vínculos calificados como 'tóxicos'. Atiende parejas en cualquier configuración."
   extraSchemas={[service, faqSchema, breadcrumb]}
 >
   {/* Breadcrumb visual */}
@@ -125,7 +127,9 @@ const faqSchema = buildFaqSchema(faqs);
         <div>
           <h3 class="text-headline text-ink">Crisis de comunicación</h3>
           <p class="mt-2 text-ink-soft leading-relaxed">
-            [Lorem placeholder — 2 líneas describiendo la situación típica.]
+            Peleas que se repiten siempre por las mismas razones, silencios
+            largos, conversaciones que terminan mal sin que ninguno entienda
+            del todo cuándo escaló.
           </p>
         </div>
       </li>
@@ -134,7 +138,9 @@ const faqSchema = buildFaqSchema(faqs);
         <div>
           <h3 class="text-headline text-ink">Infidelidad</h3>
           <p class="mt-2 text-ink-soft leading-relaxed">
-            [Lorem placeholder — 2 líneas.]
+            La crisis posterior a una infidelidad, la decisión sobre
+            continuar o no, y la reconstrucción de la confianza cuando se
+            decide seguir adelante.
           </p>
         </div>
       </li>
@@ -143,7 +149,9 @@ const faqSchema = buildFaqSchema(faqs);
         <div>
           <h3 class="text-headline text-ink">Cambios de ciclo (hijos, mudanzas, jubilación)</h3>
           <p class="mt-2 text-ink-soft leading-relaxed">
-            [Lorem placeholder — 2 líneas.]
+            Momentos de transición que reconfiguran el sistema y exponen
+            tensiones que estaban en suspensión: la llegada de un hijo, el
+            nido vacío, una mudanza, un cambio laboral.
           </p>
         </div>
       </li>
@@ -152,7 +160,9 @@ const faqSchema = buildFaqSchema(faqs);
         <div>
           <h3 class="text-headline text-ink">Sexualidad</h3>
           <p class="mt-2 text-ink-soft leading-relaxed">
-            [Lorem placeholder — 2 líneas.]
+            Deseo desparejo, distancia física sostenida, dificultades en el
+            encuentro sexual, asuntos no conversados que tensionan el
+            vínculo.
           </p>
         </div>
       </li>
@@ -161,7 +171,9 @@ const faqSchema = buildFaqSchema(faqs);
         <div>
           <h3 class="text-headline text-ink">Decisiones sobre separarse</h3>
           <p class="mt-2 text-ink-soft leading-relaxed">
-            [Lorem placeholder — 2 líneas.]
+            La duda sobre seguir o no, miedo a equivocarse, decisiones que
+            llevan tiempo postergadas. La terapia ayuda a llegar a una
+            decisión clara, sea cual sea.
           </p>
         </div>
       </li>
@@ -170,7 +182,9 @@ const faqSchema = buildFaqSchema(faqs);
         <div>
           <h3 class="text-headline text-ink">Co-parentalidad post-separación</h3>
           <p class="mt-2 text-ink-soft leading-relaxed">
-            [Lorem placeholder — 2 líneas.]
+            Parejas ya separadas que necesitan sostener un acuerdo de
+            crianza, definir reglas comunes con los hijos y reconfigurar el
+            vínculo en su nueva forma.
           </p>
         </div>
       </li>
@@ -203,7 +217,59 @@ const faqSchema = buildFaqSchema(faqs);
       <p>
         Tampoco trabajo desde la neutralidad fría. Cuando algo no funciona,
         lo digo. Cuando algo está bien encaminado, también. La idea es
-        avanzar — no validar lugares.
+        avanzar, no validar lugares.
+      </p>
+    </div>
+  </section>
+
+  {/* Manifiesto sobre "pareja tóxica" — diferenciador + SEO */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Una postura"
+      title="Sobre la idea de “pareja tóxica”."
+    />
+
+    <div class="mt-group max-w-prose space-y-5 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        En los últimos años la categoría de <strong class="text-ink">pareja
+        tóxica</strong> se volvió de uso cotidiano. Existen vínculos
+        dañinos, por supuesto: dinámicas de control, celos sostenidos,
+        violencia. Cuando aparecen, hay que nombrarlos y muchas veces
+        intervenir con un dispositivo específico.
+      </p>
+      <p>
+        Pero la categoría también se expandió hacia un uso menos preciso.
+        Hoy, ante el primer desencuentro, ante la primera diferencia
+        sostenida, se dispara la etiqueta. Los amigos sugieren cortar, los
+        familiares aceleran el desenlace, y la pareja muchas veces termina
+        eligiendo la separación antes de explorar qué está pasando entre
+        los dos. Esa lectura rápida cierra preguntas que vale la pena
+        sostener: por qué se desencuentran, qué hay debajo de los conflictos,
+        qué moviliza esa distancia.
+      </p>
+      <p>
+        Mi trabajo no es convencer a nadie de seguir junto. Es ayudar a que,
+        si la pareja decide separarse, sea una decisión tomada con
+        claridad y no por descarte. Y si decide intentarlo, que tenga las
+        herramientas para hacerlo posible.
+      </p>
+    </div>
+  </section>
+
+  {/* Parejas no monógamas — diferenciador SEO importante */}
+  <section class="container-page py-section">
+    <SectionHeading
+      kicker="Configuraciones"
+      title="Parejas en cualquier configuración."
+    />
+
+    <div class="mt-group max-w-prose space-y-5 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        Atiendo parejas en todas sus configuraciones: monógamas, abiertas,
+        no monógamas y relaciones poliamorosas. Hoy son parte habitual de
+        las consultas que llegan, y el marco sistémico es especialmente
+        útil para trabajar con sistemas vinculares que no se reducen al
+        modelo clásico.
       </p>
     </div>
   </section>

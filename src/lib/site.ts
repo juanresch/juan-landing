@@ -19,8 +19,9 @@ export const SITE = {
   whatsappUrl: 'https://wa.me/5492284675302',
 
   // Credenciales reales
-  matriculaNacional: 'M.N. [TBD]', // [TBD — pedir a Juan]
-  matriculaProvincial: 'M.P. [TBD]', // [TBD — pedir a Juan]
+  // Matrícula nacional: en trámite — no mostrar en sitio hasta tenerla emitida
+  matriculaNacional: null,
+  matriculaProvincial: 'M.P. 35.932',
   universidad: 'Universidad Nacional de Mar del Plata (UNMdP)',
   tituloGrado: 'Licenciado en Psicología',
   anioGraduacion: '2026',
@@ -68,14 +69,25 @@ export const SITE = {
   },
 
   // Población atendida
-  atiende: ['Adolescentes (12+)', 'Adultos', 'Parejas'],
-  noAtiende: ['Menores de 12 años', 'Psicología infantil', 'Trastornos mentales graves'],
+  atiende: [
+    'Adolescentes (desde 12 años)',
+    'Adultos',
+    'Adultos mayores',
+    'Parejas en cualquier configuración: monógamas, abiertas, no monógamas, poliamor',
+  ],
+  noAtiende: [
+    'Niños (hasta 11 años)',
+    'Cuadros que requieren tratamiento psiquiátrico especializado',
+    'Casos de violencia activa (deriva a recursos especializados)',
+  ],
 
-  // Horarios
+  // Honorarios y obras sociales
+  obrasSociales: 'Sin convenio directo. Se emite factura tipo C para gestión de reintegro según cada obra social.',
+
+  // Horarios reales (horario Argentina, GMT-3)
   hours: [
     { day: 'Lunes a Viernes', open: '09:00', close: '20:00' },
-    { day: 'Sábados', open: '10:00', close: '13:00' },
-  ], // [TBD — confirmar con Juan]
+  ],
 
   // Social
   social: {

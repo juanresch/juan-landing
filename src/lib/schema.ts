@@ -67,7 +67,7 @@ const personEntity = {
     {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'Matrícula profesional',
-      name: `${SITE.matriculaNacional} / ${SITE.matriculaProvincial}`,
+      name: SITE.matriculaProvincial,
     },
     {
       '@type': 'EducationalOccupationalCredential',
