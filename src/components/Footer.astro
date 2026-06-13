@@ -28,7 +28,7 @@ const footerSections = [
       { label: 'Notas sobre parejas', href: '/notas' },
       { label: 'Obras sociales', href: '/preguntas-frecuentes#obras-sociales' },
       { label: 'Cancelaciones', href: '/preguntas-frecuentes#cancelaciones' },
-      { label: 'Modalidad online', href: '/preguntas-frecuentes#online' },
+      { label: 'Reseñas en Google', href: SITE.address.googleReviewsUrl, external: true },
     ],
   },
 ];
@@ -67,6 +67,8 @@ const navSchema = {
                 <a
                   href={link.href}
                   class="text-link text-[15px]"
+                  rel={link.external ? 'noopener' : undefined}
+                  target={link.external ? '_blank' : undefined}
                 >
                   {link.label}
                 </a>

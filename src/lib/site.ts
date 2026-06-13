@@ -49,6 +49,10 @@ export const SITE = {
     longitude: -60.3315123,
     googleMapsUrl: 'https://maps.app.goo.gl/1ZTqK2fnRNH5yz4QA',
     googleMapsPlaceId: '0x959445006b7ce4df:0x5c238c55c9906645',
+    // Reseñas de Google. Por ahora apunta a la ficha de Maps (los usuarios
+    // pueden dejar review desde ahí). Cuando Juan tenga GBP verificado,
+    // reemplazar por el link directo tipo https://g.page/r/<CID>/review
+    googleReviewsUrl: 'https://maps.app.goo.gl/1ZTqK2fnRNH5yz4QA',
   },
 
   // Honorarios reales

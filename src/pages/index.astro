@@ -227,28 +227,40 @@ import juanRetrato from '../assets/juan-retrato.jpg';
     </div>
   </section>
 
-  {/* ============ Reviews (placeholder hasta tener reales) ============ */}
+  {/* ============ Reseñas + ficha en Maps ============ */}
   <section class="container-page py-section">
     <div class="max-w-3xl">
       <p class="text-caption text-accent mb-6">Reseñas</p>
-      <blockquote>
-        <p class="font-display text-2xl md:text-3xl text-ink leading-snug">
-          "Lorem ipsum dolor sit amet — placeholder hasta que tengamos las
-          primeras reseñas reales de Google. Una cita editorial larga, no un
-          carrusel de estrellitas."
-        </p>
-        <footer class="mt-6 text-caption text-ink-muted">
-          — [Nombre] · [Mes/Año]
-        </footer>
-      </blockquote>
-      <p class="mt-10">
-        <a href="https://g.page/r/PLACEHOLDER/review" class="link-underline" rel="noopener" target="_blank">
-          Ver todas en Google
+      <h2 class="text-section text-ink">
+        Las opiniones de quienes ya hicieron el proceso.
+      </h2>
+      <p class="mt-6 text-lead max-w-2xl">
+        Las reseñas se publican en Google y se pueden consultar directamente
+        desde la ficha del consultorio. Si querés dejar la tuya, también
+        podés hacerlo desde ahí.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
+        <a
+          href={SITE.address.googleReviewsUrl}
+          class="btn-primary"
+          rel="noopener"
+          target="_blank"
+        >
+          Ver reseñas en Google
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </a>
-      </p>
+        <a
+          href={SITE.address.googleMapsUrl}
+          class="btn-secondary"
+          rel="noopener"
+          target="_blank"
+        >
+          Ver consultorio en Maps
+        </a>
+      </div>
     </div>
   </section>
 
