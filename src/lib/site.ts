@@ -99,6 +99,19 @@ export const SITE = {
     tiktok: '',
   },
 
+  // Perfiles profesionales verificados (2-sep-2026: los 5 devuelven 200 con
+  // los datos de Juan). Van al `sameAs` del schema para que Google y los LLMs
+  // resuelvan la web y los directorios como UNA sola entidad.
+  // Instagram queda afuera a propósito hasta confirmar el handle: un sameAs
+  // que apunta al perfil equivocado es peor que no tener sameAs.
+  profiles: [
+    'https://www.psychologytoday.com/ar/psicologos/juan-cruz-resch-olavarria-ba/1753442',
+    'https://www.doctoraliar.com/perfil/juan-cruz-resch',
+    'https://www.mundopsicologos.com.ar/procard/juan-cruz-resch',
+    'https://terappio.com/ar/psychologists/details/juan-cruz-resch1594083663',
+    'https://ar.mivademecum.com/medicos/psicologo/juan-cruz-resch',
+  ],
+
   // Meta
   defaultOgImage: '/og-default.jpg',
   locale: 'es_AR',

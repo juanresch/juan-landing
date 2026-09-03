@@ -39,7 +39,11 @@ const navSchema = {
   '@context': 'https://schema.org',
   '@type': 'SiteNavigationElement',
   name: footerSections.flatMap((s) => s.links.map((l) => l.label)),
-  url: footerSections.flatMap((s) => s.links.map((l) => `${SITE.url}${l.href}`)),
+  // Los links externos (ej. la ficha de Google Maps) ya son URLs absolutas:
+  // prefijarlos con SITE.url generaba una URL inválida en el JSON-LD.
+  url: footerSections.flatMap((s) =>
+    s.links.map((l) => (l.external ? l.href : `${SITE.url}${l.href}`))
+  ),
 };
 ---
 

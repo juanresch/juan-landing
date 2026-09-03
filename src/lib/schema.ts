@@ -34,6 +34,7 @@ const businessEntity = {
     longitude: SITE.address.longitude,
   },
   hasMap: SITE.address.googleMapsUrl,
+  sameAs: [SITE.address.googleMapsUrl],
   areaServed: [
     { '@type': 'City', name: 'Olavarría' },
     { '@type': 'Country', name: 'Argentina' },
@@ -98,6 +99,10 @@ const personEntity = {
     'Desarrollo personal',
   ],
   knowsLanguage: ['Spanish'],
+  // Cierra el circuito de entidad: le dice a Google y a los LLMs que el Juan
+  // de esta web es el mismo de Psychology Today, Doctoralia, MundoPsicólogos,
+  // Terappio y Mi Vademécum.
+  sameAs: SITE.profiles,
 };
 
 const websiteEntity = {
