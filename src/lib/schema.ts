@@ -15,7 +15,7 @@ const businessEntity = {
   '@id': BUSINESS_ID,
   name: 'Lic. Juan Cruz Resch — Psicólogo',
   description:
-    'Consultorio de psicología con orientación sistémica integrativa. Atención a parejas, adultos y adolescentes en Olavarría, Buenos Aires.',
+    'Consultorio de psicología con orientación sistémica. Terapia individual, de pareja y familiar para adultos y adolescentes en Olavarría, Buenos Aires.',
   image: `${SITE.url}/images/juan-retrato.jpg`,
   url: SITE.url,
   telephone: SITE.phone,
@@ -78,19 +78,21 @@ const personEntity = {
         name: SITE.universidad,
       },
     },
-    {
+    ...SITE.especializaciones.map((e) => ({
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'Especialización',
-      name: SITE.especializaciones[0].titulo,
-      recognizedBy: {
-        '@type': 'Organization',
-        name: SITE.especializaciones[0].institucion,
-      },
-    },
+      name: e.titulo,
+      ...(e.institucion && {
+        recognizedBy: { '@type': 'Organization', name: e.institucion },
+      }),
+    })),
   ],
   knowsAbout: [
     'Terapia sistémica de pareja',
-    'Psicoterapia integrativa',
+    'Terapia sistémica individual',
+    'Terapia familiar sistémica',
+    'Crisis de identidad',
+    'Transiciones del ciclo vital',
     'Crisis de pareja',
     'Infidelidad',
     'Vínculos y dinámicas relacionales',

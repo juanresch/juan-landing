@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import consultorioSala from '../assets/consultorio-sala.jpg';
 import SectionHeading from '../components/SectionHeading.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import DataTable from '../components/DataTable.astro';
@@ -17,7 +19,7 @@ const faqs = [
   {
     question: '¿Qué pasa si mi pareja no quiere ir?',
     answer:
-      'Si una de las partes no quiere iniciar el proceso, no tiene sentido forzar la consulta. En esos casos sugiero empezar por un espacio individual: muchas veces, cuando algo de la dinámica empieza a moverse en uno solo, el otro miembro se suma más adelante con otra disposición. Si eso no ocurre, el trabajo individual también es útil para tomar decisiones más claras respecto al vínculo.',
+      'No tiene sentido forzar la consulta, pero se puede empezar igual. Arrancás vos en un espacio individual: trabajamos lo que te pasa en el vínculo y, cuando tiene sentido, invitamos a tu pareja a una sesión ampliada. Muchas veces quien no quería empezar un proceso de pareja sí acepta venir a una sesión puntual, y desde ahí algo de la dinámica empieza a moverse. Si eso no pasa, el trabajo individual igual sirve para tomar decisiones más claras sobre el vínculo.',
   },
   {
     question: '¿Cuánto dura un proceso de terapia de pareja?',
@@ -94,7 +96,7 @@ const faqSchema = buildFaqSchema(faqs);
         Terapia de parejas en Olavarría.
       </h1>
       <p class="mt-8 text-lead">
-        Sesiones de terapia de pareja con un enfoque sistémico integrativo.
+        Sesiones de terapia sistémica de pareja.
         Trabajo crisis de comunicación, infidelidad, transiciones de ciclo,
         sexualidad y decisiones sobre seguir o separarse. Atiendo en
         consultorio propio en Olavarría (Rivadavia 2055). Soy Lic. Juan
@@ -107,10 +109,17 @@ const faqSchema = buildFaqSchema(faqs);
 
   {/* Foto consultorio full bleed */}
   <section class="bg-bg-alt mb-section">
-    <div class="aspect-[16/9] w-full flex items-center justify-center">
-      <span class="text-caption text-ink-muted">
-        [Foto consultorio 16:9 — luz natural, dos sillones]
-      </span>
+    <div class="aspect-[16/9] w-full overflow-hidden">
+      <Image
+        src={consultorioSala}
+        alt="Consultorio de terapia de pareja en Rivadavia 2055, Olavarría: sillón, sofá y luz natural"
+        class="w-full h-full object-cover"
+        widths={[640, 960, 1280, 1920]}
+        sizes="100vw"
+        loading="lazy"
+        quality={80}
+        formats={['avif', 'webp']}
+      />
     </div>
   </section>
 

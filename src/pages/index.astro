@@ -5,7 +5,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { SITE } from '../lib/site';
 import { buildWaUrl } from '../lib/whatsapp';
-import juanConsultorio from '../assets/juan-consultorio.jpg';
+import juanSillon from '../assets/juan-sillon.jpg';
 import juanRetrato from '../assets/juan-retrato.jpg';
 ---
 
@@ -17,14 +17,14 @@ import juanRetrato from '../assets/juan-retrato.jpg';
   <section class="container-page pt-16 md:pt-24 pb-section">
     <div class="grid gap-12 md:gap-16 md:grid-cols-12 items-end">
       <div class="md:col-span-7 md:col-start-1">
-        <p class="text-caption text-accent mb-6">Psicoterapia con enfoque sistémico</p>
+        <p class="text-caption text-accent mb-6">Terapia sistémica</p>
         <h1 class="text-hero text-ink">
           Psicólogo en Olavarría — pareja, individual y adolescente.
         </h1>
         <p class="mt-8 text-lead max-w-xl">
           Soy Juan Cruz Resch, Lic. en Psicología por la Universidad
-          Nacional de Mar del Plata, con especialización en Terapia
-          Sistémica de Pareja. Atiendo presencial en Olavarría y online en
+          Nacional de Mar del Plata. Hago terapia sistémica individual, de
+          pareja y familiar. Atiendo presencial en Olavarría y online en
           toda LatAm.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
@@ -87,6 +87,16 @@ import juanRetrato from '../assets/juan-retrato.jpg';
             Momentos de decisión — vincular, vocacional, vital — sin claridad.
           </p>
         </li>
+        <li class="border-t border-line pt-6">
+          <p class="text-[19px] text-ink leading-relaxed">
+            Crisis de identidad y cambios de etapa de la vida.
+          </p>
+        </li>
+        <li class="border-t border-line pt-6">
+          <p class="text-[19px] text-ink leading-relaxed">
+            Conflictos familiares que se repiten y nadie sabe cómo cortar.
+          </p>
+        </li>
       </ul>
     </div>
   </section>
@@ -98,7 +108,7 @@ import juanRetrato from '../assets/juan-retrato.jpg';
       title="Lo que se puede trabajar."
     />
 
-    <div class="mt-group grid gap-6 md:grid-cols-3">
+    <div class="mt-group grid gap-6 md:grid-cols-2">
       <ServiceCard
         href="/terapia-de-parejas"
         title="Terapia de parejas"
@@ -108,7 +118,13 @@ import juanRetrato from '../assets/juan-retrato.jpg';
       <ServiceCard
         href="/terapia-individual"
         title="Terapia individual"
-        description="Procesos personales con adultos: ansiedad, vínculos, sentido de vida, desarrollo personal. Sesiones de 50 minutos, presencial u online."
+        description="Terapia sistémica con adultos: ansiedad, vínculos, crisis de identidad, cambios de etapa. Con sesiones ampliadas cuando otra persona pesa en lo que te pasa. 50 minutos, presencial u online."
+        variant="small"
+      />
+      <ServiceCard
+        href="/terapia-individual#terapia-familiar"
+        title="Terapia familiar"
+        description="Familias que atraviesan un conflicto que se repite o un cambio de etapa. El mismo enfoque sistémico, con todos los que forman parte de lo que pasa."
         variant="small"
       />
       <ServiceCard
@@ -126,8 +142,8 @@ import juanRetrato from '../assets/juan-retrato.jpg';
       <div class="md:col-span-5">
         <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden">
           <Image
-            src={juanConsultorio}
-            alt="Lic. Juan Cruz Resch en su consultorio en Olavarría"
+            src={juanSillon}
+            alt="Lic. Juan Cruz Resch en su consultorio de Rivadavia 2055, Olavarría"
             class="w-full h-full object-cover"
             widths={[400, 600, 800]}
             sizes="(max-width: 768px) 90vw, 500px"
@@ -142,20 +158,22 @@ import juanRetrato from '../assets/juan-retrato.jpg';
         <p class="text-caption text-accent mb-4">Sobre mí</p>
         <h2 class="text-section text-ink">
           Psicólogo formado en la Universidad Nacional de Mar del Plata, con
-          especialización en terapia sistémica de pareja.
+          formación en terapia sistémica de pareja e individual.
         </h2>
         <div class="mt-6 space-y-5 text-[17px] leading-relaxed text-ink-soft max-w-prose">
           <p>
-            Mi práctica clínica se ubica en la psicoterapia integrativa con
-            base sistémica. La mirada sistémica permite contextualizar cada
-            acción, pensamiento o emoción dentro de los vínculos en los que
-            ocurren — no separa al síntoma de la red que lo sostiene.
+            Mi base es la terapia sistémica, siempre. La mirada sistémica
+            permite contextualizar cada acción, pensamiento o emoción dentro
+            de los vínculos en los que ocurren — no separa al síntoma de la
+            red que lo sostiene. Desde ahí trabajo en terapia individual, de
+            pareja y familiar.
           </p>
           <p>
-            Cursé la Especialización en Terapia Sistémica de Pareja en la
-            Escuela Sistémica Argentina y complemento mi trabajo con
-            herramientas del psicoanálisis y la terapia cognitivo-conductual
-            cuando el cuadro lo requiere.
+            Hice la Especialización en Terapia Sistémica de Pareja en la
+            Escuela Sistémica Argentina y el Diplomado en Terapia Sistémica
+            Individual. Cuando el caso lo pide, sumo técnicas puntuales del
+            psicoanálisis o de la terapia cognitivo-conductual, sin salir del
+            marco sistémico.
           </p>
         </div>
         <div class="mt-8">

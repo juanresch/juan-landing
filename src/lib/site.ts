@@ -27,16 +27,27 @@ export const SITE = {
   anioGraduacion: '2026',
 
   // Especialización y formación
+  // 20-oct-2026: Juan pidió mostrar el diplomado como realizado (le queda un
+  // mes) y sacar "integrativo": su epistemología es sistémica, siempre.
   especializaciones: [
     {
       titulo: 'Especialización en Terapia Sistémica de Pareja',
       institucion: 'Escuela Sistémica Argentina',
+      institucionUrl: 'https://escuelasistemica.com.ar/',
       horas: 63,
       anio: 2025,
     },
+    {
+      titulo: 'Diplomado en Terapia Sistémica Individual',
+      institucion: null as string | null, // [TBD — pedir a Juan]
+      institucionUrl: null as string | null,
+      horas: null as number | null,
+      anio: 2026,
+    },
   ],
-  orientacionTeorica: 'Psicoterapia integrativa con enfoque sistémico',
-  enfoqueComplementario: 'Psicoanálisis y conductismo según el caso',
+  orientacionTeorica: 'Terapia sistémica: individual, de pareja y familiar',
+  enfoqueComplementario:
+    'Con técnicas o recursos puntuales del psicoanálisis y la terapia cognitivo-conductual según el caso, siempre dentro del marco sistémico',
 
   // Dirección
   address: {
@@ -78,6 +89,7 @@ export const SITE = {
     'Adultos',
     'Adultos mayores',
     'Parejas en cualquier configuración: monógamas, abiertas, no monógamas, poliamor',
+    'Familias',
   ],
   noAtiende: [
     'Niños (hasta 11 años)',

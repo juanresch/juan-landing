@@ -14,14 +14,14 @@ const breadcrumb = buildBreadcrumbSchema([
 const service = buildServiceSchema({
   name: 'Terapia individual',
   description:
-    'Terapia individual con orientación clínica con el Lic. Juan Resch. Presencial en Olavarría y online en toda LatAm.',
+    'Terapia sistémica individual con el Lic. Juan Cruz Resch, con sesiones ampliadas cuando hace falta. Presencial en Olavarría y online en toda LatAm.',
   url,
 });
 ---
 
 <BaseLayout
   title="Terapia individual en Olavarría y online — 50 min"
-  description="Terapia individual con el Lic. Juan Resch. Atención presencial en Olavarría y online en toda LatAm. Procesos breves o de mediano plazo."
+  description="Terapia sistémica individual con el Lic. Juan Cruz Resch, presencial en Olavarría y online en LatAm. Sesiones ampliadas y terapia familiar."
   extraSchemas={[service, breadcrumb]}
 >
   <div class="container-page pt-12">
@@ -38,8 +38,8 @@ const service = buildServiceSchema({
         Terapia individual para adultos y adolescentes.
       </h1>
       <p class="mt-8 text-lead">
-        Sesiones de psicoterapia individual con un enfoque integrativo de
-        base sistémica. Trabajo procesos de ansiedad, vínculos, sentido de
+        Sesiones de terapia sistémica individual. Trabajo procesos de
+        ansiedad, vínculos, crisis de identidad, cambios de etapa de la
         vida, decisiones difíciles y desarrollo personal. Atiendo adultos y
         adolescentes desde los 12 años, presencial en Olavarría (Rivadavia
         2055) y online en toda LatAm. Soy Lic. Juan Cruz Resch, formado en
@@ -94,7 +94,59 @@ const service = buildServiceSchema({
           </p>
         </div>
       </li>
+      <li class="border-t border-line pt-6 flex gap-6">
+        <span class="text-caption text-accent shrink-0 mt-1">05</span>
+        <div>
+          <h3 class="text-headline text-ink">Crisis de identidad y cambios de etapa</h3>
+          <p class="mt-2 text-ink-soft leading-relaxed">
+            Momentos en los que no sabés bien quién sos o hacia dónde vas.
+            El paso de una etapa de la vida a otra — irse de casa, formar
+            pareja, tener hijos, separarse, jubilarse — o un cambio que movió
+            lo que dabas por sentado.
+          </p>
+        </div>
+      </li>
     </ol>
+  </section>
+
+  <section id="sesiones-ampliadas" class="container-page py-section scroll-mt-8">
+    <SectionHeading kicker="Sesiones ampliadas" title="Cuando otra persona es parte de lo que te pasa." />
+    <div class="mt-group max-w-prose space-y-5 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        Desde la mirada sistémica, lo que le pasa a una persona casi nunca
+        le pasa sola. Por eso en terapia individual trabajo con sesiones
+        ampliadas: cuando alguien muy importante en tu vida — tu pareja, tu
+        mamá o tu papá, un hermano, un amigo — influye mucho en lo que estás
+        consultando, lo invitamos a una o algunas sesiones.
+      </p>
+      <p>
+        La terapia sigue siendo tuya. Esa persona viene a sumar su mirada y
+        a destrabar algo que en la sesión a solas no se mueve.
+      </p>
+      <h3 class="pt-4 text-headline text-ink">
+        ¿Querés hacer terapia de pareja o familiar y el otro no quiere?
+      </h3>
+      <p>
+        Es una de las dudas que más me llegan. Se puede empezar igual, de
+        forma individual: trabajamos lo que te pasa a vos en ese vínculo y,
+        cuando tiene sentido, invitamos a esa persona a una sesión ampliada.
+        Muchas veces quien no quería arrancar un proceso entero sí acepta
+        venir a una sesión, y desde ahí algo empieza a moverse.
+      </p>
+    </div>
+  </section>
+
+  <section id="terapia-familiar" class="container-page py-section scroll-mt-8">
+    <SectionHeading kicker="Terapia familiar" title="Cuando el que consulta es la familia." />
+    <div class="mt-group max-w-prose space-y-5 text-[18px] leading-relaxed text-ink-soft">
+      <p>
+        También atiendo familias: un conflicto que se repite y nadie sabe
+        cómo cortar, un cambio de etapa que desacomodó a todos — un hijo que
+        se va, una separación, un duelo — o una tensión que nadie se anima a
+        nombrar. Es el mismo enfoque sistémico que uso en individual y en
+        pareja, trabajando con todos los que forman parte de lo que pasa.
+      </p>
+    </div>
   </section>
 
   <section class="container-page py-section">

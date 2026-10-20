@@ -16,7 +16,7 @@ const breadcrumb = buildBreadcrumbSchema([
 
 <BaseLayout
   title="Sobre Juan Cruz Resch — Psicólogo en Olavarría"
-  description="Lic. en Psicología (UNMdP) con especialización en terapia sistémica de pareja. Atiende parejas, adultos y adolescentes en Olavarría y online."
+  description="Lic. en Psicología (UNMdP) con formación en terapia sistémica de pareja e individual. Individual, pareja y familia en Olavarría y online."
   extraSchemas={[breadcrumb]}
 >
   <div class="container-page pt-12">
@@ -69,8 +69,8 @@ const breadcrumb = buildBreadcrumbSchema([
             primera pareja que atendí confirmó esa intuición.
           </p>
           <p>
-            Mi enfoque clínico es la psicoterapia integrativa con base
-            sistémica. La mirada sistémica entiende que ningún síntoma — la
+            Trabajo desde la terapia sistémica: es mi base, en terapia
+            individual, de pareja y familiar. La mirada sistémica entiende que ningún síntoma — la
             ansiedad de uno, el malestar del otro, la distancia que crece —
             se explica de manera aislada. Siempre ocurre dentro de un
             vínculo: la pareja, la familia, el trabajo, la propia historia.
@@ -81,10 +81,18 @@ const breadcrumb = buildBreadcrumbSchema([
             En la sesión no busco la pregunta sofisticada por la pregunta
             misma. Combino dos momentos: la reflexión sobre lo que está
             ocurriendo y la búsqueda de estrategias concretas para sostener
-            el cambio entre encuentros. Sumo herramientas del psicoanálisis
-            y del enfoque cognitivo-conductual cuando el cuadro lo requiere.
-            Mi rol es el del acompañamiento que activa: el paciente sigue
-            siendo el que encuentra su forma de resolverlo.
+            el cambio entre encuentros. Cuando el cuadro lo pide, uso
+            algunas técnicas o recursos del psicoanálisis y del enfoque
+            cognitivo-conductual, siempre dentro del marco sistémico. Mi rol
+            es el del acompañamiento que activa: el paciente sigue siendo el
+            que encuentra su forma de resolverlo.
+          </p>
+          <p>
+            En terapia individual trabajo también con sesiones ampliadas:
+            cuando una persona importante en tu vida — tu pareja, alguien de
+            tu familia, un amigo — pesa en lo que te está pasando, la
+            invitamos a alguna sesión. Y acompaño especialmente los momentos
+            de crisis de identidad y los cambios de etapa de la vida.
           </p>
           <p>
             Trabajo en red con psiquiatras de confianza de Olavarría cuando
@@ -115,24 +123,25 @@ const breadcrumb = buildBreadcrumbSchema([
           </a>
         </dd>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
-        <dt class="text-caption text-ink-muted">Especialización</dt>
-        <dd class="md:col-span-2 text-ink">
-          {SITE.especializaciones[0].titulo}<br />
-          <a
-            href="https://escuelasistemica.com.ar/"
-            class="text-link"
-            rel="noopener"
-            target="_blank"
-          >
-            {SITE.especializaciones[0].institucion}
-          </a>
-          <span class="text-ink-soft">·
-            {SITE.especializaciones[0].horas} horas ·
-            {SITE.especializaciones[0].anio}
-          </span>
-        </dd>
-      </div>
+      {SITE.especializaciones.map((e) => (
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
+          <dt class="text-caption text-ink-muted">Formación sistémica</dt>
+          <dd class="md:col-span-2 text-ink">
+            {e.titulo}<br />
+            {e.institucion && (e.institucionUrl ? (
+              <a href={e.institucionUrl} class="text-link" rel="noopener" target="_blank">
+                {e.institucion}
+              </a>
+            ) : (
+              <span>{e.institucion}</span>
+            ))}
+            <span class="text-ink-soft">
+              {e.institucion ? ' · ' : ''}
+              {[e.horas && `${e.horas} horas`, e.anio].filter(Boolean).join(' · ')}
+            </span>
+          </dd>
+        </div>
+      ))}
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6">
         <dt class="text-caption text-ink-muted">Matrículas</dt>
         <dd class="md:col-span-2 text-ink">
@@ -143,7 +152,7 @@ const breadcrumb = buildBreadcrumbSchema([
         <dt class="text-caption text-ink-muted">Orientación teórica</dt>
         <dd class="md:col-span-2 text-ink">
           {SITE.orientacionTeorica}<br />
-          <span class="text-ink-soft">Con integración de psicoanálisis y enfoque cognitivo-conductual según el cuadro</span>
+          <span class="text-ink-soft">{SITE.enfoqueComplementario}</span>
         </dd>
       </div>
     </dl>
