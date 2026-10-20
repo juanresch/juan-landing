@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import consultorioSala from '../assets/consultorio-sala.jpg';
 import SectionHeading from '../components/SectionHeading.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import DataTable from '../components/DataTable.astro';
@@ -104,22 +102,6 @@ const faqSchema = buildFaqSchema(faqs);
         con especialización en Terapia Sistémica de Pareja por la Escuela
         Sistémica Argentina.
       </p>
-    </div>
-  </section>
-
-  {/* Foto consultorio full bleed */}
-  <section class="bg-bg-alt mb-section">
-    <div class="aspect-[16/9] w-full overflow-hidden">
-      <Image
-        src={consultorioSala}
-        alt="Consultorio de terapia de pareja en Rivadavia 2055, Olavarría: sillón, sofá y luz natural"
-        class="w-full h-full object-cover"
-        widths={[640, 960, 1280, 1920]}
-        sizes="100vw"
-        loading="lazy"
-        quality={80}
-        formats={['avif', 'webp']}
-      />
     </div>
   </section>
 
