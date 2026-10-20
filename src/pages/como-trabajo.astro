@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import consultorioSala from '../assets/consultorio-sala-vertical.jpg';
 import SectionHeading from '../components/SectionHeading.astro';
 import DataTable from '../components/DataTable.astro';
 import { SITE } from '../lib/site';
@@ -27,7 +29,8 @@ const breadcrumb = buildBreadcrumbSchema([
   </div>
 
   <section class="container-page pt-12 pb-section">
-    <div class="max-w-3xl">
+    <div class="grid gap-12 md:gap-16 md:grid-cols-12 items-center">
+    <div class="md:col-span-7">
       <h1 class="text-section text-ink">Cómo trabajo.</h1>
       <p class="mt-8 text-lead">
         Buena parte de la consulta es lo que pasa fuera de la sesión:
@@ -37,6 +40,21 @@ const breadcrumb = buildBreadcrumbSchema([
         si decidís escribir, lo hagas con claridad sobre qué tipo de
         trabajo se puede hacer en el espacio.
       </p>
+    </div>
+    <div class="md:col-span-5">
+      <div class="aspect-[4/5] bg-bg-alt rounded-image overflow-hidden">
+        <Image
+          src={consultorioSala}
+          alt="El consultorio en Rivadavia 2055, Olavarría: sofá, sillón y luz natural"
+          class="w-full h-full object-cover"
+          widths={[400, 600, 800, 1000]}
+          sizes="(max-width: 768px) 90vw, 500px"
+          loading="eager"
+          quality={80}
+          formats={['avif', 'webp']}
+        />
+      </div>
+    </div>
     </div>
   </section>
 
